@@ -1,0 +1,60 @@
+﻿@import "base";
+
+/*Modal Windows*/
+.overlay{
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    z-index:3000;
+    display:none;
+}
+
+/*Loader*/
+.loader{
+    position:absolute;
+    @include px2rem(width, 32px);
+    @include px2rem(height, 32px);
+    background:url('../img/loader.gif') center center no-repeat;
+    opacity:1;
+    z-index:3200;
+    display:none;
+}
+
+.modal{
+    position:absolute;
+    display:none;
+    box-sizing:border-box;
+    @include px2rem(width, 280px);
+    background:#000;
+    background:rgba(0,0,0,0.2);
+    border-radius:10px;
+    @include px2rem(padding, 8px);
+    z-index:3100;
+}
+
+.modal__content{
+    border-radius:$border-radius;
+    background:#fff;
+    @include px2rem(padding, 20px 10px);
+    margin:0;
+}
+.modal__close{
+    position:absolute;
+    top:10px;
+    right:10px;
+    text-decoration:none;
+}
+
+@media(min-width:550px){
+    .modal{
+        @include px2rem(width, 500px);
+    }
+    .modal__content{
+        @include px2rem(padding, $project-line-height 20px);
+    }
+}

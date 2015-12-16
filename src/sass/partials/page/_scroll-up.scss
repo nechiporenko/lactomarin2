@@ -1,0 +1,31 @@
+﻿@import "../../modules/_base.scss";
+/*Scroll-up button*/
+.scroll-up-btn{
+    //@include px-to-rem(width, 50px);
+    width:50px;
+    width:rem(50);
+    height:50px;
+    height:rem(50);
+    line-height:50px;
+    line-height:rem(50);
+    color:$primary;
+    text-shadow:none;
+    background-color:#ddd;
+    text-align:center;
+    vertical-align:middle;
+    outline:none;
+    @include font-size(24px);
+    position:fixed;
+    right:5px;
+    bottom:5px;
+    opacity:.5;
+    @include transition(.3s opacity);
+    z-index:1000;
+    cursor:pointer;
+    display:none; //покажем скриптом
+
+    &:hover,
+    &:active{
+        opacity:.9;
+    }
+}

@@ -1,0 +1,95 @@
+// Core imports
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
+@import "neat-grid-settings";
+@import "../bower_components/neat/app/assets/stylesheets/neat";
+
+// Default project variables
+$project-font-size:16px; //in px
+$project-line-height:24px; //in px
+
+$menu-breakpoint:768px;
+$grid-gutter: flex-gutter();
+$border-radius:4px;
+
+//colors
+$text-color:#444;
+$title-color:#222;
+$border-color:#d1d1d1;
+$primary:#3498db;
+
+
+@function calculateRem($size) {
+  $remSize: $size / $em-base; //bourbon variable (16px);
+  @return #{$remSize}rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+//centered image
+@mixin img-centered(){
+    position:absolute;
+    top:0; right:0; bottom:0; left:0;
+    max-width:100%;
+    max-height:100%;
+    margin:auto;
+}
+
+
+//ie8 clearfix
+//for new browsers, use bourbon clearfix() mixin
+@mixin clear-fix(){
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+
+@mixin px2rem($property, $values) {
+  // Create a couple of empty lists as output buffers.
+  $font-size: $em-base;
+  $px-values: ();
+  $rem-values: ();
+
+  // Loop through the $values list
+  @each $value in $values {
+    // For each property value, if it's in rem or px, derive both rem and
+    // px values for it and add those to the end of the appropriate buffer.
+    // Ensure all pixel values are rounded to the nearest pixel.
+    @if $value == 0 or $value == 0px {
+      // 0 -- use it without a unit
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+      // px value given - calculate rem value from font-size
+      $new-rem-value: $value / $font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == "%") {
+      // % value given - don't add px or rem
+      $px-values: join($px-values, #{$value});
+      $rem-values: join($rem-values, #{$value});
+    } @else if $value == auto {
+      // auto - don't add px or rem
+      $px-values: join($px-values, auto);
+      $rem-values: join($rem-values, auto);
+    } @else {
+      // unitless value - use those directly as rem and calculate the px-fallback
+      $px-values: join($px-values, round($value * $font-size));
+      $rem-values: join($rem-values, #{$value}rem);
+    }
+  }
+
+  // output the converted rules
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}

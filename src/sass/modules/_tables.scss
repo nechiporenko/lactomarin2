@@ -1,0 +1,32 @@
+﻿/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@import "base";
+
+.g-table{
+    @extend .g-full-width;
+    th,
+    td {
+      @include px2rem(padding, $project-line-height/2 15px);
+      text-align: left;
+      border-bottom: 1px solid $border-color; 
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: 0; }
+    th:last-child,
+    td:last-child {
+      padding-right: 0; }
+}
+
+/*Make table scrollable on small screens*/
+.g-table-wrap{
+    width:100%;
+    overflow-y:hidden;
+    overflow-x:auto;
+    @include px2rem(margin-bottom, $project-line-height);
+
+    table{
+        margin-bottom:0;
+    }
+}
