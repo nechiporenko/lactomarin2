@@ -37,21 +37,17 @@ textarea {
 /* Base Styles */
 html{
     font-size:100%;
+    height:100%;
 }
 
-body{
-    line-height:strip-units($project-line-height/$project-font-size);
-    font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
-    color: $text-color;
-}
 
 /* Typography*/
 h1, h2, h3, h4, h5, h6, .g-title-h1, .g-title-h2, .g-title-h3, .g-title-h4 {
   margin-top: 0;
   @include px2rem(margin-bottom, $project-line-height);
-  line-height:strip-units($project-line-height/20);
+  line-height:strip-units($project-line-height/16);
   color:$title-color;
-  font-weight:bold;
+  font-weight:normal;
 }
 .g-title-h1, .g-title-h2, .g-title-h3, .g-title-h4{
     display:block;
@@ -85,35 +81,6 @@ ol ul {
     list-style-type:none;
     margin:0;
     padding:0;
-}
-
-/* Blockquote */
-blockquote{
-    font-size:120%;
-    line-height:1.6;
-    font-style: italic;
-    @include px2rem(padding, 0 0 0 30px);
-    border-left:2px solid $primary;
-}
-cite{
-    display:block;
-    font-size:75%;
-}
-
-/* Code */
-code {
-    padding:2px 5px;
-    margin:0 2px;
-    font-size: 90%;
-    white-space: nowrap;
-    background: #F1F1F1;
-    border: 1px solid $border-color;
-    border-radius:$border-radius;
-}
-pre > code {
-  display: block;
-  padding:10px 15px;
-  white-space: pre;
 }
 
 

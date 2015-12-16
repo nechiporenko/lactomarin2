@@ -1,3 +1,37 @@
 @import "../modules/base";
-@import "header/_logo.scss";
 
+@import "header/_logo.scss";
+@import "header/_header-actions.scss";
+
+/*Header Section*/
+.page{//body class
+    min-height:100%;
+    line-height:strip-units($project-line-height/$project-font-size);
+    font-family: 'Roboto', Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+    color: $text-color;
+
+    @include media($desktop){
+
+    }
+}
+.header{
+    width:100%;
+    background:#fff;
+    padding:12px 0;
+    border-bottom:1px solid $border-color;
+    box-shadow:0 -1px 5px rgba(#000, .4);
+
+    @include media($desktop){
+        position:fixed;
+        top:0; left:0;
+        z-index:1000;
+    }
+}
+.header__inner{
+    @extend .g-container;
+    position:relative;
+}
+
+.header__action{
+    float:right;
+}

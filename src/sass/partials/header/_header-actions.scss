@@ -1,0 +1,47 @@
+﻿@import "../../modules/_base.scss";
+
+/*Header Mobile Menu Toggle Button*/
+.header__menu-btn,
+.header__callback-btn{
+    @include px2rem(height, 34px);
+    @include px2rem(width, 34px);
+    @include px2rem(line-height, 34px);
+    padding:0; 
+    margin:0 10px 0 0;
+    border:none;
+    background:#fff;
+    @include font-size(28px);
+    outline:none;
+
+     [class^="icon-"]:before, [class*=" icon-"]:before{
+         margin:0;
+     }
+}
+
+.header__menu-btn{
+    float:left;
+    color:#000;
+
+    @include media($tablet){
+        @include px2rem(height, 76px);
+        @include px2rem(line-height, 76px);
+    }
+}
+.header__callback-btn{
+    float:right;
+    color:$primary-bright;
+
+    @include media($mobile){
+        display:none;
+    }
+}
+
+/*Header Action Block*/
+.header__phone,
+.h-callback{
+    display:none;
+
+    @include media($mobile){
+        display:block;
+    }
+}

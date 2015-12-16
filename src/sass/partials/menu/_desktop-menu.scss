@@ -1,2 +1,18 @@
 ﻿/* Desktop Menu */
 @import "../../modules/_base.scss";
+.header__menu{
+    display:none;
+    @include media($large){
+        display:block;
+    }
+}
+
+.h-menu{
+    @extend .g-clearlist;
+    font-size:0;
+    position:relative;
+}
+.h-menu__item{
+    display:inline-block;
+    @include font-size(16px);
+}

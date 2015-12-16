@@ -1,3 +1,33 @@
 ﻿@import "../../modules/_base.scss";
 
 /*Site Logo*/
+.h-logo{
+    float:left;
+    @include px2rem(width, 112px);
+    @include px2rem(height, 34px);
+    background-image:url(../img-common/logo.png);
+    background-position:left center;
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    position:relative;
+    color:$text-color;
+    text-decoration:none;
+
+    @include media($small){
+        @include px2rem(width, 250px);
+        @include px2rem(height, 76px);
+    }
+}
+.h-logo__title{
+    font-weight:300;
+    position:absolute;
+    @include font-size(10px);
+    font-weight:300;
+    bottom:0;
+    @include px2rem(left, 43px);
+    text-transform:uppercase;
+    display:none;
+    @include media($small){
+        display:block;
+    }
+}

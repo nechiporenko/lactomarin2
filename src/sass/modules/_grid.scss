@@ -5,6 +5,10 @@
     @include outer-container();
     @include px2rem(padding, 0 10px);
     box-sizing:border-box;
+
+    @include media($large){
+        @include px2rem(padding, 0 20px);
+    }
 }
 
 .g-row{

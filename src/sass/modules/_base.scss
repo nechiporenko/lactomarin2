@@ -5,18 +5,18 @@
 @import "../bower_components/neat/app/assets/stylesheets/neat";
 
 // Default project variables
-$project-font-size:16px; //in px
-$project-line-height:24px; //in px
+$project-font-size:14px; //in px
+$project-line-height:18px; //in px
 
-$menu-breakpoint:768px;
 $grid-gutter: flex-gutter();
 $border-radius:4px;
 
 //colors
-$text-color:#444;
-$title-color:#222;
+$text-color:#727272;
+$title-color:#34495e;
 $border-color:#d1d1d1;
-$primary:#3498db;
+$primary:#488ccb;
+$primary-bright:#da4328;
 
 
 @function calculateRem($size) {
