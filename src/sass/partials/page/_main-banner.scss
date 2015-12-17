@@ -1,0 +1,151 @@
+﻿@import "../../modules/_base.scss";
+/*Main Banner*/
+.m-banner{
+    padding:30px 0 23px;
+    background-color:#509998;
+    background-image:url(../img/main-banner/m-banner-sm.jpg);
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-size:cover;
+    color:#fff;
+    position:relative;
+    z-index:1;
+
+    &:after{
+        content:'';
+        display:block;
+        position:absolute;
+        top:0; right:0; bottom:0; left:0;
+        background-color:rgba($primary-alt, .3);
+        @include background-image(url(../img/main-banner/pattern.png), linear-gradient(to bottom, rgba($primary, .2), rgba($primary, .4)));
+        z-index:-1;
+    }
+
+    @include media($small){
+        background-image:url(../img/main-banner/m-banner-md.jpg);
+    }
+    @include media($desktop){
+        background-image:url(../img/main-banner/m-banner-xl.jpg);
+    }
+}
+
+.m-banner__title,
+.m-banner__subtitle{
+    display:block;
+    margin-bottom:36px;
+    line-height:1.125;
+    text-transform:uppercase;
+    color:#fff;
+    text-align:center;
+}
+.m-banner__title{
+    @include font-size(24px);
+}
+.m-banner__subtitle{
+    font-weight:500;
+    @include font-size(32px);
+
+    @include media($desktop){
+        text-align:left;
+    }
+}
+.m-banner__inner{
+    width:100%;
+    max-width:940px;
+    margin:0 auto;
+
+    @include media($desktop){
+        @extend .g-as-table;
+    }
+}
+.m-banner__column{
+    box-sizing:border-box;
+
+    @include media($desktop){
+        width:50%;
+        padding-right:20px;
+        display:table-cell;
+        vertical-align:middle;
+    }
+
+    @include media($large){
+        width:42%;
+    }
+}
+.m-banner__column--last{
+    padding:0;
+    text-align:center;
+    @include media($large){
+        width:58%;
+        text-align:right;
+    }
+}
+
+.m-banner__info{
+    margin-bottom:32px;
+    @include font-size(14px);
+    font-weight:300;
+    text-align:center;
+
+    @include media($desktop){
+        text-align:left;
+    }
+}
+
+.m-banner__list{
+    max-width:400px;
+    list-style-type:none;
+    padding:0;
+    margin:0 auto 18px;
+
+    @include media($desktop){
+        max-width:unset;
+        margin:0;
+    }
+}
+.m-banner__item{
+    display:block;
+    margin-bottom:16px;
+    padding-left:80px;
+    min-height:50px;
+    position:relative;
+    @include font-size(18px);
+    line-height:1.3;
+    font-weight:300;
+
+    &:last-child{
+        margin-bottom:0;
+    }
+
+    &:before{
+        content:'';
+        display:block;
+        width:60px;
+        height:51px;
+        position:absolute;
+        left:0; top:0;
+        background-image:url(../img/main-banner/m-banner-icon.png);
+        background-repeat:no-repeat;
+    }
+}
+.m-banner__item--1{
+    &:before{
+        background-position:0 0;
+    }
+    
+}
+.m-banner__item--2{
+    &:before{
+        background-position:0 -51px;
+    }
+}
+.m-banner__item--3{
+    &:before{
+        background-position:0 -102px;
+    }
+}
+.m-banner__item--4{
+    &:before{
+        background-position:0 -153px;
+    }
+}

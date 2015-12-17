@@ -1,0 +1,23 @@
+﻿@import "../../modules/_base.scss";
+/*Footer Menu*/
+
+.f-menu{
+    list-style-type:none;
+    padding:0;
+    margin-bottom:28px;
+}
+.f-menu__item{
+    margin:18px 0;
+}
+.f-menu__link{
+    @include font-size(14px);
+    font-weight:300;
+    color:#fff;
+    text-decoration:none;
+
+    &:hover,
+    &:active{
+        color:$primary-alt;
+    }
+}
+

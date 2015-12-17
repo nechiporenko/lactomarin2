@@ -1,18 +1,142 @@
 ﻿/* Desktop Menu */
 @import "../../modules/_base.scss";
 .header__menu{
+    float:left;
+    margin-left:10px;
     display:none;
-    @include media($large){
+
+    @include media($desktop){
         display:block;
+    }
+
+    @include media($large){
+        margin-left:30px;
+    }
+
+    @include media(min-width em(1280)){
+        margin-left:55px;
     }
 }
 
+/*First DesktopMenu Level*/
 .h-menu{
     @extend .g-clearlist;
     font-size:0;
     position:relative;
+    z-index:1000;
 }
 .h-menu__item{
     display:inline-block;
     @include font-size(16px);
+    line-height:100%;
+}
+.h-menu__link{
+    display:inline-block;
+    @include px2rem(padding, 26px 3px 34px);
+    text-decoration:none;
+    @include px2rem(letter-spacing, -.5px);
+    position:relative;
+
+    &:before{ //прослойка высотой как нижний пэддинг хидера, для того чтобы можно было перевести мышку с пункта меню ниже
+        content:'';
+        display:block;
+        position:absolute;
+        height:19px;
+        width:100%;
+        top:100%; left:0;
+    }    
+
+    &:hover,
+    &:active,
+    &.hover,
+    &.current{
+        color:$primary-alt;
+    }
+
+    @include media($large){
+        @include px2rem(padding, 26px 15px 34px);
+        letter-spacing:0;
+    }
+}
+
+.has-menu .h-menu__link{
+    &:after{
+        content:'\e808';
+        font-family:'fontello';
+        position:absolute;
+        top:60px;
+        left:50%;
+        @include font-size(18px);
+        margin-left:-8px;
+        opacity:0;
+        @include transition(opacity .15s ease-in);
+    }
+
+    &:hover,
+    &.hover{
+        &:after{
+            opacity:1;
+        }
+    }
+}
+
+.lt-ie9{
+    .has-menu .h-menu__link{
+        &:after{
+            display:none;
+        }
+
+        &:hover,
+        &.hover{
+            &:after{
+                display:block;
+            }
+        }
+    }
+}
+
+/*Second DesktopMenu Level*/
+.h-submenu{
+    @extend .g-clearfix;
+    list-style-type:none;
+    padding:0 0 16px 0;
+    margin:19px 0 0 0;
+    position:absolute;
+    top:100%; left:0;
+    width:100%;
+    z-index:1000;
+    background:#fff;
+    box-sizing:border-box;
+    border-left:1px solid $border-color;
+    border-bottom:1px solid $border-color;
+    border-right:1px solid $border-color;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    box-shadow:0 1px 1px rgba(#000, .1);
+    display:none; //покажем скриптом
+}
+
+.h-submenu__item{
+    float:left;
+    width:(100%)/3;
+    @include omega(3n);
+}
+.h-submenu__link{
+    display:block;
+    padding:6px 10px;
+    line-height:1.1;
+    color:$text-color;
+    text-decoration:none;
+    font-weight:300;
+
+    &:hover,
+    &:active,
+    &.current{
+        background:#f1f1f1;
+        color:$primary-alt;
+    }
+
+    @include media($large){
+        padding:6px 15px;
+    }
 }

@@ -4,8 +4,8 @@ $max-width: em(1280);
 $mobile: new-breakpoint(min-width em(480));
 $small: new-breakpoint(min-width em(640));
 $tablet: new-breakpoint(min-width em(768));
-$desktop: new-breakpoint(min-width em(992));
-$large: new-breakpoint(min-width em(1200));
+$desktop: new-breakpoint(min-width em(1024));
+$large: new-breakpoint(min-width em(1248));
 
 $column: golden-ratio(1em, 3) !default;
 $gutter: golden-ratio(1em, 3) !default;

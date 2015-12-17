@@ -42,15 +42,23 @@ html{
 
 
 /* Typography*/
-h1, h2, h3, h4, h5, h6, .g-title-h1, .g-title-h2, .g-title-h3, .g-title-h4 {
+h1, h2, h3, h4, h5, h6, .g-title{
   margin-top: 0;
   @include px2rem(margin-bottom, $project-line-height);
   line-height:strip-units($project-line-height/16);
   color:$title-color;
   font-weight:normal;
 }
-.g-title-h1, .g-title-h2, .g-title-h3, .g-title-h4{
+.g-title{
     display:block;
+    @include font-size(24px);
+    margin-bottom:2*$project-line-height;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+b, strong{
+    font-weight:700;
 }
 
 .g-brand-color{

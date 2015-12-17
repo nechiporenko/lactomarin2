@@ -35,53 +35,20 @@
 
 // Application Scripts:
 
-// Десктоп меню (выпадайки)
-// Кнопка скролла страницы
 // Модальное окно
+// Десктоп меню (выпадайки)
+// Мобильное меню
+// Кнопка скролла страницы
 // Если браузер не знает о svg-картинках
 
 jQuery(document).ready(function ($) {
     //Кэшируем
     var $window = $(window),
+        $html=$('html'),
         $body = $('body');
 
-    //
-    // Десктоп меню (выпадайки)
-    //---------------------------------------------------------------------------------------
-    var initDesktopMenu = (function () {
-        $('.js-menu li').on({
-            mouseenter: function () {
-                $(this).find('ul:first').stop(true, true).fadeIn('fast');
-                $(this).find('a:first').addClass('hover');
-            },
-            mouseleave: function () {
-                $(this).find('ul').stop(true, true).fadeOut('slow');
-                $(this).find('a:first').removeClass('hover');
-            }
-        })
-    })();
-
-   
-
-    //
-    // Кнопка скролла страницы
-    //---------------------------------------------------------------------------------------
-    var initPageScroller = (function () {
-        var $scroller = $('<div class="scroll-up-btn"><i class="icon-up-open-big"></i></div>');
-        $body.append($scroller);
-        $window.on('scroll', function () {
-            if ($(this).scrollTop() > 300) {
-                $scroller.show();
-            } else {
-                $scroller.hide();
-            }
-        });
-        $scroller.on('click', function () {
-            $('html, body').animate({ scrollTop: 0 }, 800);
-            return false;
-        });
-    }());
-
+    $body.append('<div id="overlay" class="overlay"></div>');//оверлей
+    var $overlay = $('#overlay');
 
     //
     // Модальное окно
@@ -89,14 +56,10 @@ jQuery(document).ready(function ($) {
     var showModal = (function (link) {
         var
         method = {},
-        $overlay,
         $modal,
         $close;
 
-        // добавим в документ
-        $overlay = $('<div id="overlay" class="overlay"></div>'); //оверлей
         $close = $('<a class="modal__close" href="#"><i class="icon-cancel"></i></a>'); //иконка закрыть
-
 
         $close.on('click', function (e) {
             e.preventDefault();
@@ -122,22 +85,16 @@ jQuery(document).ready(function ($) {
             $modal = $(link);
             $modal.append($close);
             method.center();
-            $body.append($overlay);
             $window.bind('resize.modal', method.center);
-            $modal.fadeIn();
-            $overlay.fadeIn();
-
-            $overlay.bind('click', function () {
-                method.close();
-            });
+            $modal.show();
+            $overlay.show();
+            $overlay.bind('click', method.close);
         };
 
         // закрываем
         method.close = function () {
-            $modal.fadeOut('fast');
-            $overlay.fadeOut('fast', function () {
-                $overlay.unbind('click').remove(); //убиваем оверлей
-            });
+            $modal.hide();
+            $overlay.unbind('click', method.close).hide();
             $window.unbind('resize.modal');
         };
 
@@ -150,6 +107,105 @@ jQuery(document).ready(function ($) {
         var link = $(this).data('modal');
         if (link) { showModal.open(link); }
     });
+
+    //
+    // Десктоп меню (выпадайки)
+    //---------------------------------------------------------------------------------------
+    var desktopMenu = (function () {
+        var $menu = $('.js-menu');
+        $menu.find('li').has('ul').addClass('has-menu');
+        $menu.children('li').on({
+            mouseenter: function () {
+                $(this).find('ul:first').stop(true, true).fadeIn('fast');
+                $(this).find('a:first').addClass('hover');
+            },
+            mouseleave: function () {
+                $(this).find('ul').stop(true, true).hide();
+                $(this).find('a:first').removeClass('hover');
+            }
+        })
+    })();
+
+    //
+    // Мобильное меню
+    //---------------------------------------------------------------------------------------
+    var mobileMenu = (function () {
+        var $menu = $('.js-mnav'),
+            $toggle_btn = $('.js-mnav-toggle'),
+            $menu_btn = $menu.find('li').has('ul').addClass('has-menu').children('a'),
+            $submenu = $menu.find('.has-menu').children('ul'),
+            method = {};
+
+
+        $('.header__inner').on('click', '.js-mnav-toggle', function () {
+            if ($(this).hasClass('active')) {
+                method.close();
+            } else {
+                method.show();
+            }
+        });
+
+        $menu.on('click', '.m-menu__label', function () {
+            method.close();
+        });
+
+        $menu.on('click', '.has-menu > a', function (e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')) {
+                method.closeSubMenu();
+            } else {
+                method.closeSubMenu();
+                method.showSubMenu($(this));
+            }
+        });
+
+        method.show = function () {
+            $html.css('overflow', 'hidden');
+            $overlay.addClass('mobile').show().bind('click', method.close);
+            $toggle_btn.addClass('active');
+            $menu.addClass('active');
+        }
+
+        method.close = function () {
+            $overlay.removeClass('mobile').hide().unbind('click', method.close);
+            method.closeSubMenu();
+            $toggle_btn.removeClass('active');
+            $menu.removeClass('active');
+            $html.css('overflow', 'auto');
+        }
+
+        method.showSubMenu = function (el) {
+            method.closeSubMenu();
+            el.addClass('active').parent('li').children('ul').slideDown();
+        }
+
+        method.closeSubMenu = function () {
+            $submenu.slideUp();
+            $menu_btn.removeClass('active');
+        }
+        return method;
+    })();
+
+
+    //
+    // Кнопка скролла страницы
+    //---------------------------------------------------------------------------------------
+    var initPageScroller = (function () {
+        var $scroller = $('<div class="scroll-up-btn"><i class="icon-up-open-big"></i></div>');
+        $body.append($scroller);
+        $window.on('scroll', function () {
+            if ($(this).scrollTop() > 300) {
+                $scroller.show();
+            } else {
+                $scroller.hide();
+            }
+        });
+        $scroller.on('click', function () {
+            $('html, body').animate({ scrollTop: 0 }, 800);
+            return false;
+        });
+    }());
+
 
     //
     // Если браузер не знает о svg-картинках

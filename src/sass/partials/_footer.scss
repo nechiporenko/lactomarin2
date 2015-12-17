@@ -1,2 +1,67 @@
 @import "../modules/base";
 
+/*Site Footer*/
+.footer{
+    padding-top:18px;
+    background:$title-color;
+    color:#fff;
+    text-align:center;
+    @include media($tablet){
+        text-align:left;
+    }
+}
+
+.footer__sole{
+    padding:8px 0;
+    background:#f9f9f9;
+    color:$text-color;
+    text-align:center;
+}
+.footer__copyright{
+    @include font-size(14px);
+}
+
+.f-info{
+    list-style-type:none;
+    padding:0;
+
+    @include media($desktop){
+        padding-top:10px;
+    }
+}
+.f-info__item{
+    margin:18px 0;
+
+    @include media($desktop){
+        margin:0 0 16px 0;
+    }
+}
+.f-info__tel{
+    @include font-size(16px);
+    color:#fff;
+    text-decoration:none;
+    white-space:nowrap;
+    font-weight:700;
+
+    &:hover,
+    &:active{
+        color:$primary-alt;
+    }
+
+    @include media($desktop){
+        @include font-size(24px);
+    }
+}
+
+.f-info__title{
+    @include font-size(16px);
+
+    @include media($desktop){
+        @include font-size(18px);
+    }
+}
+
+.f-info__content{
+    @include font-size(14px);
+    font-weight:300;
+}
