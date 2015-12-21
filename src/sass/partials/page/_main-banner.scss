@@ -1,9 +1,9 @@
 ﻿@import "../../modules/_base.scss";
 /*Main Banner*/
-.m-banner{
+.b-banner{
     padding:30px 0 23px;
     background-color:#509998;
-    background-image:url(../img/main-banner/m-banner-sm.jpg);
+    background-image:url(../img/main-banner/b-banner-sm.jpg);
     background-position:center top;
     background-repeat:no-repeat;
     background-size:cover;
@@ -17,20 +17,20 @@
         position:absolute;
         top:0; right:0; bottom:0; left:0;
         background-color:rgba($primary-alt, .3);
-        @include background-image(url(../img/main-banner/pattern.png), linear-gradient(to bottom, rgba($primary, .2), rgba($primary, .4)));
+        @include background-image(url(../img/b-banner/pattern.png), linear-gradient(to bottom, rgba($primary, .2), rgba(#012e2d, .7)));
         z-index:-1;
     }
 
     @include media($small){
-        background-image:url(../img/main-banner/m-banner-md.jpg);
+        background-image:url(../img/b-banner/b-banner-md.jpg);
     }
     @include media($desktop){
-        background-image:url(../img/main-banner/m-banner-xl.jpg);
+        background-image:url(../img/b-banner/b-banner-xl.jpg);
     }
 }
 
-.m-banner__title,
-.m-banner__subtitle{
+.b-banner__title,
+.b-banner__subtitle{
     display:block;
     margin-bottom:36px;
     line-height:1.125;
@@ -38,10 +38,10 @@
     color:#fff;
     text-align:center;
 }
-.m-banner__title{
+.b-banner__title{
     @include font-size(24px);
 }
-.m-banner__subtitle{
+.b-banner__subtitle{
     font-weight:500;
     @include font-size(32px);
 
@@ -49,7 +49,7 @@
         text-align:left;
     }
 }
-.m-banner__inner{
+.b-banner__inner{
     width:100%;
     max-width:940px;
     margin:0 auto;
@@ -58,7 +58,7 @@
         @extend .g-as-table;
     }
 }
-.m-banner__column{
+.b-banner__column{
     box-sizing:border-box;
 
     @include media($desktop){
@@ -72,7 +72,7 @@
         width:42%;
     }
 }
-.m-banner__column--last{
+.b-banner__column--last{
     padding:0;
     text-align:center;
     @include media($large){
@@ -81,7 +81,7 @@
     }
 }
 
-.m-banner__info{
+.b-banner__info{
     margin-bottom:32px;
     @include font-size(14px);
     font-weight:300;
@@ -92,7 +92,7 @@
     }
 }
 
-.m-banner__list{
+.b-banner__list{
     max-width:400px;
     list-style-type:none;
     padding:0;
@@ -103,7 +103,7 @@
         margin:0;
     }
 }
-.m-banner__item{
+.b-banner__item{
     display:block;
     margin-bottom:16px;
     padding-left:80px;
@@ -124,27 +124,27 @@
         height:51px;
         position:absolute;
         left:0; top:0;
-        background-image:url(../img/main-banner/m-banner-icon.png);
+        background-image:url(../img/b-banner/b-banner-icon.png);
         background-repeat:no-repeat;
     }
 }
-.m-banner__item--1{
+.b-banner__item--1{
     &:before{
         background-position:0 0;
     }
     
 }
-.m-banner__item--2{
+.b-banner__item--2{
     &:before{
         background-position:0 -51px;
     }
 }
-.m-banner__item--3{
+.b-banner__item--3{
     &:before{
         background-position:0 -102px;
     }
 }
-.m-banner__item--4{
+.b-banner__item--4{
     &:before{
         background-position:0 -153px;
     }

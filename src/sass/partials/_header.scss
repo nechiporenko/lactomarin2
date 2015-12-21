@@ -15,12 +15,15 @@
         padding-top:108px; //высота десктоп-хидера
     }
 }
+.page__content{
+    min-height:500px;
+}
 .header{
     width:100%;
     background:#fff;
     padding:12px 0;
     border-bottom:1px solid $border-color;
-    box-shadow:0 1px 3px rgba(#000, .1);
+    box-shadow:0 1px 3px rgba(#000, .4);
     box-sizing:border-box;
 
     @include media($desktop){
@@ -35,6 +38,3 @@
     position:relative;
 }
 
-.header__action{
-    float:right;
-}

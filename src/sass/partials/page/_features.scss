@@ -1,0 +1,62 @@
+﻿@import "../../modules/_base.scss";
+/*Features block*/
+.b-features{
+    padding:30px 0;
+    background:#fff;
+    border-bottom:1px solid $border-color;
+}
+
+.b-features__list{
+    list-style-type:none;
+    padding:0;
+    @extend .g-clearfix;
+    width:100%;
+    max-width:940px;
+    margin:0 auto;
+}
+.b-features__item{
+    @include media($small){
+        @include span-columns(6);
+        @include omega(2n);
+    }
+
+    @include media($desktop){
+        @include span-columns(3);
+        @include omega-reset(2n);
+        @include omega(4n);
+    }
+}
+
+.b-features__block{
+    width:100%;
+    max-width:220px;
+    margin:0 auto 30px;
+}
+.b-features__thumb{
+    border:1px solid $border-color;
+    margin-bottom:12px;
+    border-radius:10px;
+    height:144px;
+    box-sizing:border-box;
+    overflow:hidden;
+}
+.b-features__img{
+    @extend .g-full-width;
+    border-radius:9px;
+    @include transition(.3s ease opacity);
+    @include backface-visibility(hidden);
+
+    &:hover{
+        opacity:.8;
+    }
+}
+.b-features__title{
+    font-weight:300;
+    @include font-size(16px);
+    line-height:1.125;
+    text-align:center;
+
+    b, strong{
+        font-weight:500;
+    }
+}

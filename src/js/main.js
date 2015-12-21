@@ -4,7 +4,9 @@
 // Десктоп меню (выпадайки)
 // Мобильное меню
 // Кнопка скролла страницы
+// Маска для телефонного номера
 // Если браузер не знает о svg-картинках
+// Если браузер не знает о плейсхолдерах в формах
 
 jQuery(document).ready(function ($) {
     //Кэшируем
@@ -171,6 +173,10 @@ jQuery(document).ready(function ($) {
         });
     }());
 
+    //
+    // Маска для телефонного номера
+    //---------------------------------------------------------------------------------------
+    $('.js-phone-input').mask('+7 (999) 999 - 99 - 99');
 
     //
     // Если браузер не знает о svg-картинках
@@ -181,6 +187,43 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    //
+    // Если браузер не знает о плейсхолдерах в формах
+    //---------------------------------------------------------------------------------------
+    if (!("placeholder" in document.createElement("input"))) {
+        $("input[placeholder], textarea[placeholder]").each(function () {
+            var val = $(this).attr("placeholder");
+            if (this.value == "") {
+                this.value = val;
+            }
+            $(this).focus(function () {
+                if (this.value == val) {
+                    this.value = "";
+                }
+            }).blur(function () {
+                if ($.trim(this.value) == "") {
+                    this.value = val;
+                }
+            })
+        });
+
+        $('form').submit(function () {
+            $(this).find("input[placeholder], textarea[placeholder]").each(function () {
+                if (this.value == $(this).attr("placeholder")) {
+                    this.value = "";
+                }
+            });
+        });
+    }
+
+
+    //
+    // Костыли для ie8
+    //---------------------------------------------------------------------------------------
+    if ($html.hasClass('lt-ie9')) {
+        $('.b-features__item:nth-child(4n)').css('margin-right', 0);
+        $('.b-features__item:nth-child(4n+1)').css('clear', 'left');
+    }
    
 
     

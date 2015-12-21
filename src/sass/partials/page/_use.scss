@@ -1,0 +1,154 @@
+﻿@import "../../modules/_base.scss";
+/*Use Block*/
+.b-use{
+    padding:30px 0;
+    border-bottom:1px solid $border-color;
+    background-color:#d8f2d5;
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    @include media($small){
+        background-image:url(../img/b-use/b-use-bg.jpg);
+    }
+
+    .g-title{
+        margin-bottom:20px;
+    }
+}
+.b-use__inner{
+    width:100%;
+    max-width:940px;
+    margin:0 auto;
+    @extend .g-clearfix;
+    position:relative;
+    z-index:2;
+}
+.b-use__col{
+    padding:25px 10px;
+    margin:0 auto 25px;
+    width:100%;
+    max-width:320px;
+    min-height:1px;
+    box-sizing:border-box;
+    background:#fff;
+    box-shadow:1px 3px 7px rgba(#000, .4);
+    position:relative;
+    z-index:3; //поверх картинки продукта блока
+
+    &:after{
+        content:'';
+        display:block;
+        width:85px;
+        height:87px;
+        background-image:url(../img/b-use/b-use-icon.png);
+        background-repeat:no-repeat;
+        position:absolute;
+        right:-10px;
+        bottom:-22px;
+    }
+
+    @include media($small){
+        padding:25px 20px;
+    }
+
+    @include media($desktop){
+        float:left;
+        width:(95.32%)/3;
+        margin:0 0 20px 2.34%;
+        
+
+        &:first-child{
+            margin-left:0;
+        }
+    }
+}
+
+.b-use__col--1{
+    border-left:5px solid $primary;
+    &:after{
+        background-position:0 0;
+    }
+
+    .b-use__title{
+        color:$primary;
+    }
+}
+
+.b-use__col--2{
+    border-left:5px solid #0aaca9;
+
+    &:after{
+        background-position:0 -87px;
+    }
+    .b-use__title{
+        color:#0aaca9;
+    }
+}
+
+.b-use__col--3{
+    border-left:5px solid #20c38a;
+    &:after{
+        background-position:0 -174px;
+    }
+    .b-use__title{
+        color:#20c38a;
+    }
+}
+
+
+.b-use__title{
+    display:block;
+    padding-bottom:18px;
+    margin-bottom:10px;
+    @include font-size(18px);
+    text-transform:uppercase;
+    line-height:1.2;
+    font-weight:500;
+    border-bottom:1px solid $border-color;
+}
+
+.b-use__list{
+    list-style-type:none;
+    padding:0;
+    margin:0 -10px;
+
+    @include media($small){
+        margin:0 -20px;
+    }
+}
+.b-use__item{
+    @include font-size(14px);
+}
+.b-use__link{
+    display:block;
+    padding:10px;
+    line-height:1.1;
+    text-decoration:none;
+    color:$text-color;
+
+    @include media($small){
+        padding:10px 20px;
+    }
+
+    &:hover,
+    &:active{
+        background:#f1f1f1;
+    }
+}
+
+
+.b-use__img{
+    width:380px;
+    height:271px;
+    background:url(../img/b-use/b-use-product.png) no-repeat;
+    position:absolute;
+    bottom:-50px;
+    left:-230px;
+    z-index:1;
+    display:none;
+
+    @include media($large){
+        display:block;
+    }
+}

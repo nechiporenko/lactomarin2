@@ -1,7 +1,11 @@
 ﻿@import "../modules/_base.scss";
 
 @import "page/_breadcrumbs.scss";
-@import "page/_main-banner.scss";
+@import "page/_main-banner.scss";//баннер на главной странице
+@import "page/_consultation.scss"; //блок заказать консультацию
+@import "page/_use.scss";//блок "применение"
+@import "page/_features.scss"; //блок "благотворное влияние"
+@import "page/_main-info.scss"; //осн. информационный блок
 @import "page/_slider.scss";
 @import "page/_scroll-up.scss";
 

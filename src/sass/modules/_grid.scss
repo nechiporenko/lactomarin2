@@ -28,7 +28,7 @@
   width: 100%;
   float: left;
   box-sizing: border-box;
-  min-height:0.01%;
+  min-height:1px;
 
   @include media($tablet){
       margin-left:$grid-gutter;
