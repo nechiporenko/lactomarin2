@@ -72,3 +72,50 @@
         padding:30px 0 0 20px;
     }
 }
+
+
+.b-info__list{
+    @extend .g-clearlist;
+    font-size:1px;
+    line-height:0;
+    text-align:center;
+
+    &:after{
+        content: '';
+        width: 100%;
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+        display: none;
+    }
+
+    @include media($desktop){
+        text-align:justify;
+        text-align-last: justify;
+
+        &:after{
+            display:inline-block;
+        }
+    }
+}
+.b-info__item{
+    @include font-size(16px);
+    line-height:normal;
+    vertical-align:top;
+
+    @include media($desktop){
+        display:inline-block;
+    }
+}
+
+.b-info__btn{
+    @extend .g-btn;
+    width:220px;
+
+    @include media($desktop){
+        width:auto;
+    }
+}
+.b-info__btn--clear{
+    @extend .g-btn--clear;
+}

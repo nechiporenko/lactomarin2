@@ -13,7 +13,7 @@
     white-space: nowrap;
     @include linear-gradient(to bottom, #fd4f33, $primary-bright);
     @include px2rem(border-radius, 18px);
-    border: none;
+    border: 1px solid $primary-bright;
     cursor: pointer;
     box-sizing: border-box;
 
@@ -27,5 +27,19 @@
 
     @include media($desktop){
         @include px2rem(padding, 0 30px);
+    }
+}
+
+.g-btn--clear{
+    border:1px solid $border-color;
+    background:#fff;
+    color:#20c38a;
+
+    &:hover,
+    &:active,
+    &:focus{
+        border-color:$primary-bright;
+        @include linear-gradient(to top, #fd4f33, $primary-bright);
+        color:#fff;
     }
 }

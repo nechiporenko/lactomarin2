@@ -1,0 +1,70 @@
+﻿@import "../../modules/_base.scss";
+/*Manager Block*/
+.b-manager{
+    padding:45px 0;
+    border-bottom:1px solid $border-color;
+    background:#fff;
+}
+.b-manager__inner{
+    @extend .b-info__inner;
+}
+
+.b-manager__col{
+    @extend .b-info__col;
+}
+.b-manager__col--first{
+    text-align:center;
+    @include media($tablet){
+        width:31.92%;
+        text-align:left;
+        padding-left:30px;
+    }
+}
+.b-manager__col--last{
+    @extend .b-info__col--last;
+}
+.b-manager__thumb{
+    padding:0;
+    margin-bottom:30px;
+}
+.b-manager__img{
+    @extend .g-max-full-width;
+    border-radius:50%;
+    border:1px solid $border-color;
+}
+.b-manager__name{
+    margin-top:20px;
+    font-weight:300;
+    @include font-size(18px);
+}
+.b-manager__title{
+    display:block;
+    margin-bottom:35px;
+    @include font-size(21px);
+    line-height:1.2;
+    font-weight:300;
+}
+.b-manager__text{
+    @include font-size(14px);
+    font-weight:300;
+}
+
+.b-manager__form{
+    margin:32px 0;
+    text-align:center;
+    @extend .g-clearfix;
+
+    @include media($desktop){
+        text-align:left;
+    }
+}
+.b-manager__input{
+    @extend .g-input;
+    @extend .g-input--phone;
+
+    @include media($desktop){
+        width:250px;
+        float:left;
+        margin-right:40px;
+    }
+}
