@@ -606,6 +606,7 @@ img.g-img-right {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
+  font-weight: 400;
   background-color: #fd4f33;
   background-image: -webkit-linear-gradient(top, #fd4f33, #da4328);
   background-image: linear-gradient(to bottom,#fd4f33, #da4328);
@@ -849,8 +850,8 @@ input[type="checkbox"], input[type="radio"] {
 
 /*Header Fixed Order Button*/
 .header__order-btn {
-  padding: 0 42px 0 25px;
-  padding: 0 2.625rem 0 1.5625rem;
+  padding: 0 43px 0 25px;
+  padding: 0 2.6875rem 0 1.5625rem;
   display: none;
   position: absolute;
   top: 126px;
@@ -1467,15 +1468,13 @@ input[type="checkbox"], input[type="radio"] {
   margin: 0 auto 30px; }
 
 .b-features__thumb {
-  border: 1px solid #cbcbcb;
   margin-bottom: 12px;
-  border-radius: 10px;
   height: 144px;
-  box-sizing: border-box;
   overflow: hidden; }
 
 .b-features__img {
-  border-radius: 9px;
+  border: 1px solid #cbcbcb;
+  border-radius: 10px;
   -webkit-transition: .3s ease opacity;
   -moz-transition: .3s ease opacity;
   transition: .3s ease opacity;

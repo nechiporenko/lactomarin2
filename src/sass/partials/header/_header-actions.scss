@@ -106,7 +106,7 @@
 /*Header Fixed Order Button*/
 .header__order-btn{
     @extend .g-btn;
-    @include px2rem(padding, 0 42px 0 25px);
+    @include px2rem(padding, 0 43px 0 25px);
     display:none;
     position:absolute;
     @include px2rem(top, 126px);

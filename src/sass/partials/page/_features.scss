@@ -30,16 +30,14 @@
     margin:0 auto 30px;
 }
 .b-features__thumb{
-    border:1px solid $border-color;
     margin-bottom:12px;
-    border-radius:10px;
     height:144px;
-    box-sizing:border-box;
     overflow:hidden;
 }
 .b-features__img{
     @extend .g-full-width;
-    border-radius:9px;
+    border:1px solid $border-color;
+    border-radius:10px;
     @include transition(.3s ease opacity);
     @include backface-visibility(hidden);
 

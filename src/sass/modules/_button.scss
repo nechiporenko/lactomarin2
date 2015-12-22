@@ -11,6 +11,7 @@
     text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
+    font-weight:400;
     @include linear-gradient(to bottom, #fd4f33, $primary-bright);
     @include px2rem(border-radius, 18px);
     border: 1px solid $primary-bright;
