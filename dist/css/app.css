@@ -490,7 +490,7 @@ img.g-img-right {
   width: 100%;
   box-sizing: border-box; }
 
-.g-max-full-width, img.g-img-left, img.g-img-right, .b-info__img, .b-manager__img, .r-slider__img {
+.g-max-full-width, img.g-img-left, img.g-img-right, .b-info__img, .b-manager__img, .r-slider__img, .b-review__img {
   max-width: 100%;
   box-sizing: border-box; }
 
@@ -562,15 +562,15 @@ img.g-img-right {
     display: table; }
 
 /*Default Grid*/
-.g-col {
+.g-col, .b-review__col {
   width: 100%;
   float: left;
   box-sizing: border-box;
   min-height: 1px; }
   @media screen and (min-width: 48em)  {
-    .g-col {
+    .g-col, .b-review__col {
       margin-left: 2.3576515979%; }
-      .g-col:first-child {
+      .g-col:first-child, .b-review__col:first-child {
         margin-left: 0; } }
 
 @media screen and (min-width: 48em)  {
@@ -849,8 +849,8 @@ input[type="checkbox"], input[type="radio"] {
 
 /*Header Fixed Order Button*/
 .header__order-btn {
-  padding: 0 43px 0 25px;
-  padding: 0 2.6875rem 0 1.5625rem;
+  padding: 0 42px 0 25px;
+  padding: 0 2.625rem 0 1.5625rem;
   display: none;
   position: absolute;
   top: 126px;
@@ -1724,6 +1724,43 @@ input[type="checkbox"], input[type="radio"] {
       -webkit-transition-timing-function: ease;
       -moz-transition-timing-function: ease;
       transition-timing-function: ease; } }
+
+/*Single Review Section*/
+.b-review {
+  padding: 30px 0;
+  border-bottom: 1px solid #cbcbcb;
+  background: #fff;
+  font-weight: 300; }
+
+@media screen and (min-width: 48em)  {
+  .b-review__col--first {
+    width: 17%; }
+  .b-review__col--last {
+    width: 80.6423484021%; } }
+
+.b-review__author {
+  text-align: center; }
+  @media screen and (min-width: 48em)  {
+    .b-review__author {
+      margin-left: 20px; } }
+
+.b-review__img {
+  margin: 0 auto 25px;
+  max-width: 100px;
+  border-radius: 50%; }
+
+.b-review__title, .b-review__name {
+  display: block;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.1; }
+
+.b-review__title, .b-review__quote {
+  margin-bottom: 40px; }
+
+.b-review__quote {
+  font-size: 14px;
+  font-size: 0.875rem; }
 
 /*Scroll-up button*/
 .scroll-up-btn {

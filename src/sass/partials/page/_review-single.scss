@@ -1,0 +1,51 @@
+﻿@import "../../modules/_base.scss";
+/*Single Review Section*/
+.b-review{
+    padding:30px 0;
+    border-bottom:1px solid $border-color;
+    background:#fff;
+    font-weight:300;
+}
+.b-review__col{
+    @extend .g-col;
+}
+
+@include media($tablet){
+    .b-review__col--first{
+        width:17%;
+    }
+
+    .b-review__col--last{
+        width:(83%-$grid-gutter);
+    }
+}
+
+.b-review__author{
+    text-align:center;
+
+    @include media($tablet){
+        margin-left:20px;
+    }
+}
+
+.b-review__img{
+    @extend .g-max-full-width;
+    margin:0 auto 25px;
+    max-width:100px;
+    border-radius:50%;
+}
+
+.b-review__title,
+.b-review__name{
+    display:block;
+    @include font-size(16px);
+    line-height:1.1;
+}
+
+.b-review__title,
+.b-review__quote{
+    margin-bottom:40px;
+}
+.b-review__quote{
+    @include font-size(14px);
+}
