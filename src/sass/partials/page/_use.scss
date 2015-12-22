@@ -17,10 +17,7 @@
     }
 }
 .b-use__inner{
-    width:100%;
-    max-width:940px;
-    margin:0 auto;
-    @extend .g-clearfix;
+    @extend .g-inner;
     position:relative;
     z-index:2;
 }

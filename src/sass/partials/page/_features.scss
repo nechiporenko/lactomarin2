@@ -9,10 +9,7 @@
 .b-features__list{
     list-style-type:none;
     padding:0;
-    @extend .g-clearfix;
-    width:100%;
-    max-width:940px;
-    margin:0 auto;
+    @extend .g-inner;
 }
 .b-features__item{
     @include media($small){

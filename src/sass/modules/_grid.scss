@@ -11,6 +11,13 @@
     }
 }
 
+.g-inner{
+    width:100%;
+    @include px2rem(max-width, 940px);
+    margin:0 auto;
+    @extend .g-clearfix;
+}
+
 .g-row{
     @include row();  
 }

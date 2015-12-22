@@ -1,0 +1,116 @@
+﻿@import "../../modules/_base.scss";
+/*Video Review Slider*/
+.r-slider{
+    padding:30px 0;
+    background:#f9f9f9;
+    border-bottom:1px solid $border-color;
+
+    .bx-wrapper{
+        .bx-controls-direction a{
+            top:43%;           
+        }
+
+        @include media(min-width em(640)){
+            .bx-prev{
+                left:-30px;
+            }
+            .bx-next{
+                right:-30px;
+            }
+        }
+    }
+}
+.r-slider__list{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+}
+.r-slider__item{
+    float:left;
+
+
+    &.active{
+        .r-slider__img{
+            z-index:2;//поверх остальных картинок в слайдере
+            @include transform(scale(1.4));
+        }
+        .r-slider__caption{
+            @include transform(translateY(50px));
+            opacity:1;
+        }
+    }
+}
+.r-slider__thumb{
+    padding:0;
+    margin:0;
+    position:relative;
+
+    @include media($desktop){
+        margin:60px 0;
+    }
+}
+.r-slider__link{
+    display:block;
+    position:relative;
+    text-decoration:none;
+
+    &:after{
+        content:'\e805';
+        font-family:'fontello';
+        color:#fff;
+        @include font-size(24px);
+        margin-top:-11px;
+        margin-left:-8px;
+    }
+    &:before{
+        content:'';
+        display:block;
+        width:52px;
+        height:36px;
+        border-radius:8px;
+        line-height:36px;
+        text-align:center;
+        margin-top:-18px;
+        margin-left:-26px;
+        background:$primary-bright;
+    }
+
+    &:before,
+    &:after{
+        position:absolute;
+        left:50%; top:50%;
+        z-index:5;
+        opacity:.7;
+        line-height:1;
+        @include transition(opacity .3s ease);
+        @include backface-visibility(hidden);
+    }
+
+    &:hover,
+    &:active{
+        &:before,
+        &:after{
+            opacity:1;
+        }
+    }
+}
+.r-slider__img{
+    @extend .g-max-full-width;
+    @include transition(transform .5s ease);
+    position:relative;
+    z-index:1;
+}
+.r-slider__caption{
+    margin-top:18px;
+    @include font-size(18px);
+    font-weight:300;
+    color:$title-color;
+    text-align:center;
+
+    @include media($desktop){
+        opacity:0;
+        @include transition-property(transform, opacity);
+        @include transition-duration(1s);
+        @include transition-timing-function(ease);
+    }
+}
+

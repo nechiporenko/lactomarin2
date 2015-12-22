@@ -31,42 +31,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "8e04c98c8f5ca0a035776e3001ad2638",
-      "css": "facebook",
-      "code": 59409,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "b8d0c7d76e87b94882329a88e8e43d3d",
-      "css": "gplus",
-      "code": 59411,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "4c1ef492f1d2c39a2250ae457cee2a6e",
-      "css": "instagramm",
-      "code": 59415,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "627abcdb627cb1789e009c08e2678ef9",
-      "css": "twitter",
-      "code": 59410,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "f3d95e13eb43f3f6b8efe1eb424a1e3b",
-      "css": "vkontakte",
-      "code": 59412,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "a9862b9d5197886c1ad693ecd7120b31",
-      "css": "youtube",
-      "code": 59397,
-      "src": "fontawesome"
-    },
-    {
       "uid": "2cfb3f2b46b34a1790aec0aa846297b6",
       "css": "menu",
       "code": 59406,
@@ -125,6 +89,12 @@
       "css": "up-dir",
       "code": 59416,
       "src": "entypo"
+    },
+    {
+      "uid": "929ff290f0be577d2a2d587d5a53eec1",
+      "css": "play",
+      "code": 59397,
+      "src": "iconic"
     },
     {
       "uid": "in76hg99crrkpcbz2rjnmgbiw74s72y0",

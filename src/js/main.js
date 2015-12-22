@@ -6,6 +6,7 @@
 // Кнопка скролла страницы
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
+// Слайдер видео-ревью
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
 
@@ -61,6 +62,7 @@ jQuery(document).ready(function ($) {
 
         // закрываем
         method.close = function () {
+            $modal.find('iframe').attr('src', '');//если в модальном окне было видео - убъем
             $modal.hide();
             $overlay.unbind('click', method.close).hide();
             $window.unbind('resize.modal');
@@ -183,6 +185,113 @@ jQuery(document).ready(function ($) {
     // Автовыравнивание блоков по высоте
     //---------------------------------------------------------------------------------------
     $('.js-match-height').matchHeight();
+
+
+    //
+    // Слайдер видео-ревью
+    //---------------------------------------------------------------------------------------
+    function initReviewSlider() {
+        var $slider = $('.js-review-slider'),
+            $item = $slider.children('li'),
+            isDesktop = false, //флаг доп.проверки
+            winW = verge.viewportW(); //точная ширина окна браузера
+
+        getSliderSettings = function () {//будем показывать разное кол-во слайдов на разных разрешениях
+            var setting,
+                settings1 = {
+                    maxSlides: 1,
+                    slideWidth: 280,
+                    slideMargin: 0,
+                },
+                settings2 = {
+                    maxSlides: 1,
+                    slideWidth: 440,
+                    slideMargin: 0,
+                },
+                settings3 = {
+                    maxSlides: 3,
+                    slideWidth: 312,
+                    slideMargin: 2,
+                    onSliderLoad: function (currentIndex) {
+                        $item.eq(currentIndex + 1).addClass('active');
+                    },
+                    onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+                        $item.removeClass('active').eq(newIndex + 1).addClass('active');
+                    }
+                },
+                common = {
+                    auto: false,
+                    pager: false,
+                    infiniteLoop: false,
+                    hideControlOnEnd: true,
+                    minSlides: 1,
+                    moveSlides: 1,
+                };
+
+            if (winW < 480) {
+                isDesktop = false;
+                setting = $.extend(settings1, common);
+            }
+            if (winW >= 480 && winW < 1024) {
+                isDesktop = false;
+                setting = $.extend(settings2, common);
+            }
+            if (winW >= 1024) {
+                isDesktop = true;
+                setting = $.extend(settings3, common);
+            }
+            return setting;
+        }
+
+        $slider = $slider.bxSlider(getSliderSettings()); //запускаем слайдер
+
+        $window.on('resize', function () {
+            setTimeout(recalcSliderSettings, 500);
+        });
+
+        function recalcSliderSettings() {
+            winW = verge.viewportW();
+            if (winW >= 1024 && isDesktop) {//изменили размер окна, но остались на десктопе
+                return false;
+            } else {
+                $item.removeClass('active'); //перешли с большого экрана на мелкий
+            }
+            $slider.reloadSlider($.extend(getSliderSettings(), { startSlide: checkStartSlide() }));
+        }
+
+        function checkStartSlide() {//если перешли на десктоп - нельзя чтобы текущим стал последний слайд
+            var total = $slider.getSlideCount(),
+                current = $slider.getCurrentSlide();
+            if ((total - current) < 3) {
+                current = total - 3;
+            }
+            return current;
+        }
+
+        $slider.on('click', '.js-video', function (e) {//по клику откроем видео в модальном окне
+            e.preventDefault();
+            var link = $(this).attr('href'),
+                id = getYoutubeID(link);
+
+            if (id) {
+                $('#video').find('iframe').attr('src', 'https://www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0;autoplay=1');
+                showModal.open('#video');
+            }
+        });
+
+        function getYoutubeID(url) {//парсим youtube-ссылку, возвращаем id видео
+            var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+            var match = url.match(regExp),
+                urllink;
+            if (match && match[1].length == 11) {
+                urllink = match[1];
+            } else {
+                urllink = false;
+            }
+            return urllink;
+        }
+    }
+    if ($('.js-review-slider').length) { initReviewSlider();}
 
     //
     // Если браузер не знает о svg-картинках

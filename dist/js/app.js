@@ -23,7 +23,7 @@
 
 // Place any jQuery/helper plugins in here.
 
-/**
+/*
  * bxSlider v4.2.4
  * Copyright 2013-2015 Steven Wanderski
  * Written while drinking Belgian ales and listening to jazz
@@ -75,6 +75,13 @@
     }, t(r._applyDataApi), t(window).bind("load", function (t) { r._update(!1, t) }), t(window).bind("resize orientationchange", function (t) { r._update(!0, t) })
 });
 
+/*
+ * verge 1.9.1+201402130803
+ * https://github.com/ryanve/verge
+ * MIT License 2013 Ryan Van Etten
+ */
+!function (a, b, c) { "undefined" != typeof module && module.exports ? module.exports = c() : a[b] = c() }(this, "verge", function () { function a() { return { width: k(), height: l() } } function b(a, b) { var c = {}; return b = +b || 0, c.width = (c.right = a.right + b) - (c.left = a.left - b), c.height = (c.bottom = a.bottom + b) - (c.top = a.top - b), c } function c(a, c) { return a = a && !a.nodeType ? a[0] : a, a && 1 === a.nodeType ? b(a.getBoundingClientRect(), c) : !1 } function d(b) { b = null == b ? a() : 1 === b.nodeType ? c(b) : b; var d = b.height, e = b.width; return d = "function" == typeof d ? d.call(b) : d, e = "function" == typeof e ? e.call(b) : e, e / d } var e = {}, f = "undefined" != typeof window && window, g = "undefined" != typeof document && document, h = g && g.documentElement, i = f.matchMedia || f.msMatchMedia, j = i ? function (a) { return !!i.call(f, a).matches } : function () { return !1 }, k = e.viewportW = function () { var a = h.clientWidth, b = f.innerWidth; return b > a ? b : a }, l = e.viewportH = function () { var a = h.clientHeight, b = f.innerHeight; return b > a ? b : a }; return e.mq = j, e.matchMedia = i ? function () { return i.apply(f, arguments) } : function () { return {} }, e.viewport = a, e.scrollX = function () { return f.pageXOffset || h.scrollLeft }, e.scrollY = function () { return f.pageYOffset || h.scrollTop }, e.rectangle = c, e.aspect = d, e.inX = function (a, b) { var d = c(a, b); return !!d && d.right >= 0 && d.left <= k() }, e.inY = function (a, b) { var d = c(a, b); return !!d && d.bottom >= 0 && d.top <= l() }, e.inViewport = function (a, b) { var d = c(a, b); return !!d && d.bottom >= 0 && d.right >= 0 && d.top <= l() && d.left <= k() }, e });
+jQuery.extend(verge);
 // Application Scripts:
 
 // Модальное окно
@@ -83,6 +90,7 @@
 // Кнопка скролла страницы
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
+// Слайдер видео-ревью
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
 
@@ -138,6 +146,7 @@ jQuery(document).ready(function ($) {
 
         // закрываем
         method.close = function () {
+            $modal.find('iframe').attr('src', '');//если в модальном окне было видео - убъем
             $modal.hide();
             $overlay.unbind('click', method.close).hide();
             $window.unbind('resize.modal');
@@ -260,6 +269,113 @@ jQuery(document).ready(function ($) {
     // Автовыравнивание блоков по высоте
     //---------------------------------------------------------------------------------------
     $('.js-match-height').matchHeight();
+
+
+    //
+    // Слайдер видео-ревью
+    //---------------------------------------------------------------------------------------
+    function initReviewSlider() {
+        var $slider = $('.js-review-slider'),
+            $item = $slider.children('li'),
+            isDesktop = false, //флаг доп.проверки
+            winW = verge.viewportW(); //точная ширина окна браузера
+
+        getSliderSettings = function () {//будем показывать разное кол-во слайдов на разных разрешениях
+            var setting,
+                settings1 = {
+                    maxSlides: 1,
+                    slideWidth: 280,
+                    slideMargin: 0,
+                },
+                settings2 = {
+                    maxSlides: 1,
+                    slideWidth: 440,
+                    slideMargin: 0,
+                },
+                settings3 = {
+                    maxSlides: 3,
+                    slideWidth: 312,
+                    slideMargin: 2,
+                    onSliderLoad: function (currentIndex) {
+                        $item.eq(currentIndex + 1).addClass('active');
+                    },
+                    onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+                        $item.removeClass('active').eq(newIndex + 1).addClass('active');
+                    }
+                },
+                common = {
+                    auto: false,
+                    pager: false,
+                    infiniteLoop: false,
+                    hideControlOnEnd: true,
+                    minSlides: 1,
+                    moveSlides: 1,
+                };
+
+            if (winW < 480) {
+                isDesktop = false;
+                setting = $.extend(settings1, common);
+            }
+            if (winW >= 480 && winW < 1024) {
+                isDesktop = false;
+                setting = $.extend(settings2, common);
+            }
+            if (winW >= 1024) {
+                isDesktop = true;
+                setting = $.extend(settings3, common);
+            }
+            return setting;
+        }
+
+        $slider = $slider.bxSlider(getSliderSettings()); //запускаем слайдер
+
+        $window.on('resize', function () {
+            setTimeout(recalcSliderSettings, 500);
+        });
+
+        function recalcSliderSettings() {
+            winW = verge.viewportW();
+            if (winW >= 1024 && isDesktop) {//изменили размер окна, но остались на десктопе
+                return false;
+            } else {
+                $item.removeClass('active'); //перешли с большого экрана на мелкий
+            }
+            $slider.reloadSlider($.extend(getSliderSettings(), { startSlide: checkStartSlide() }));
+        }
+
+        function checkStartSlide() {//если перешли на десктоп - нельзя чтобы текущим стал последний слайд
+            var total = $slider.getSlideCount(),
+                current = $slider.getCurrentSlide();
+            if ((total - current) < 3) {
+                current = total - 3;
+            }
+            return current;
+        }
+
+        $slider.on('click', '.js-video', function (e) {//по клику откроем видео в модальном окне
+            e.preventDefault();
+            var link = $(this).attr('href'),
+                id = getYoutubeID(link);
+
+            if (id) {
+                $('#video').find('iframe').attr('src', 'https://www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0;autoplay=1');
+                showModal.open('#video');
+            }
+        });
+
+        function getYoutubeID(url) {//парсим youtube-ссылку, возвращаем id видео
+            var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+            var match = url.match(regExp),
+                urllink;
+            if (match && match[1].length == 11) {
+                urllink = match[1];
+            } else {
+                urllink = false;
+            }
+            return urllink;
+        }
+    }
+    if ($('.js-review-slider').length) { initReviewSlider();}
 
     //
     // Если браузер не знает о svg-картинках

@@ -1,7 +1,7 @@
 ﻿@import "../../modules/base";
 /** BX Slider **/
 
-$controls: '../img-common/controls.png';
+$controls: '../img-common/arrows.png';
 $loader:   '../img-common/loader.gif';
 
 //layout
@@ -11,20 +11,9 @@ $loader:   '../img-common/loader.gif';
 	padding: 0;
 	-ms-touch-action: pan-y;
 	touch-action: pan-y;
-	img {
-		max-width: 100%;
-		display: block;
-	}
 }
 
-.bxslider {
-	margin: 0;
-	padding: 0;
-}
 
-ul.bxslider {
-	list-style: none;
-}
 
 .bx-viewport {
 	//fix other elements on the page moving (on Chrome)
@@ -37,7 +26,7 @@ ul.bxslider {
 	.bx-pager,
 	.bx-controls-auto {
 		position: absolute;
-        @include px2rem(bottom, -$project-line-height);
+        @include px2rem(bottom, $project-line-height);
 		width: 100%;	
 	}
 }
@@ -93,95 +82,50 @@ ul.bxslider {
 .bx-wrapper {
 	.bx-prev {
 		left: 10px;
-		background: url($controls) no-repeat 0 -32px;
+		background: url($controls) no-repeat 0 -25px;
+
 		&:hover,
 		&:focus {
-			background-position: 0 0;
+			background-position: -10px -25px;
 		}
+
+        &.disabled{
+            background-position: 0 -25px;
+        }
+
+        @include media($desktop){
+            left:-30px;
+        }
 	}
 	.bx-next {
 		right: 10px;
-		background: url($controls) no-repeat -43px -32px;
+		background: url($controls) no-repeat 0 0;
 		&:hover,
 		&:focus {
-			background-position: -43px 0;
+			background-position: -10px 0;
 		}
+
+        &.disabled{
+            background-position: 0 0;
+        }
+
+        @include media($desktop){
+            right:-30px;
+        }
 	}
 	.bx-controls-direction a {
 		position: absolute;
 		top: 50%;
 		margin-top: -16px;
 		outline: 0;
-		width: 32px;
-		height: 32px;
-		text-indent: -9999px;
-		z-index: 9999;
+		width: 10px;
+		height: 24px;
+		@include hide-text();
+		z-index: 20;
+        @include transition(opacity .3s ease);
 		&.disabled {
-			display: none;
+			opacity:.2;
 		}
 	}
 }
 	
-// AUTO CONTROLS (START / STOP)
-.bx-wrapper .bx-controls-auto {
-	text-align: center;
-	.bx-start {
-		display: block;
-		text-indent: -9999px;
-		width: 10px;
-		height: 11px;
-		outline: 0;
-		background: url($controls) -86px -11px no-repeat;
-		margin: 0 3px;
-		&:hover,
-		&.active,
-		&:focus {
-			background-position: -86px 0;
-		}
-	}
-	.bx-stop {
-		display: block;
-		text-indent: -9999px;
-		width: 9px;
-		height: 11px;
-		outline: 0;
-		background: url($controls) -86px -44px no-repeat;
-		margin: 0 3px;
-		&:hover,
-		&.active,
-		&:focus {
-			background-position: -86px -33px;
-		}
-	}
-}
-
-// PAGER WITH AUTO-CONTROLS HYBRID LAYOUT
-.bx-wrapper {
-	.bx-controls.bx-has-controls-auto.bx-has-pager {
-		.bx-pager {
-			text-align: left;
-			width: 80%;
-		}
-		.bx-controls-auto {
-			right: 0;
-			width: 35px;
-		}
-	}
-}
-
-// IMAGE CAPTIONS
-.bx-wrapper .bx-caption {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	background: #666;
-	background: rgba(80, 80, 80, 0.75);
-	width: 100%;
-	span {
-		color: #fff;
-		font-family: Arial;
-		display: block;
-		font-size: .85em;
-		padding: 10px;
-	}
-}
