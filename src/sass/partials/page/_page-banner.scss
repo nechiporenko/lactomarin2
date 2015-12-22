@@ -1,0 +1,131 @@
+﻿@import "../../modules/_base.scss";
+/*Inner Page Banner*/
+.p-banner{
+    padding:30px 0;
+    background-color:#d8f2d5;
+    background-position:center bottom;
+    background-repeat:no-repeat;
+    background-size:cover;
+    box-sizing:border-box;
+
+    @include media($tablet){
+        padding:37px 0 0;
+        height:540px;
+        overflow:hidden;
+    }
+}
+.p-banner__inner{
+    @extend .g-inner;
+    position:relative;
+    @include media($tablet){
+        height:503px; //+паддинг сверху = 540 пикселей - общая высота баннера на десктопе
+    }
+}
+
+.p-banner__content{
+    @include media($tablet){
+        position:absolute;
+        bottom:55px;
+    }
+}
+
+.p-banner__title,
+.p-banner__subtitle{
+    display:block;
+    line-height:1.2;
+    color:#010101;
+}
+
+.p-banner__title{
+    margin-bottom:5px;
+    @include font-size(24px);
+    font-weight:500;
+    text-transform:uppercase;
+
+    @include media($tablet){
+        @include font-size(36px);
+    }
+}
+.p-banner__subtitle{
+    margin-bottom:30px;
+    @include font-size(18px);
+
+    @include media($tablet){
+        @include font-size(24px);
+    }
+}
+
+.p-banner__list{
+    @extend .g-styled-list;
+    margin-bottom:45px;
+    @include font-size(18px);
+    font-weight:300;
+
+    li{
+        display:block;
+        margin-bottom:8px;
+    }
+}
+
+.p-banner__btn{
+    @extend .g-btn;
+    margin:0;
+    @include px2rem(height, 54px);
+    @include px2rem(line-height, 54px);
+    @include px2rem(border-radius, 27px);
+}
+.p-banner__btn--xl{
+    display:none;
+}
+.p-banner__btn--xs{
+    width:248px;
+}
+
+@include media($tablet){
+    .p-banner__btn--xl{
+        display:inline-block;
+    }
+    .p-banner__btn--xs{
+        display:none;
+    }
+}
+
+/*Page Banner Reccomended Block*/
+.b-reccomend{
+    width:248px;
+    height:144px;
+    margin-top:30px;
+    box-sizing:border-box;
+    padding:5px;
+    border:5px solid #b6d3a7;
+    border-color:rgba(#b6d3a7, .8);
+    border-radius:20px;
+    background-color:#fff;
+    background-color:rgba(#fff, .8);
+    box-shadow:0 1px 6px rgba(#000, .5);
+    background-image:url(../img-common/check.png);
+    background-position:center center;
+    background-repeat:no-repeat;
+
+    @include media($tablet){
+        position:absolute;
+        bottom:15px; right:0;
+    }
+
+    @include media($large){
+        margin-right:-100px;
+    }
+}
+.b-reccomend__title{
+    display:block;
+    font-weight:700;
+    text-transform:uppercase;
+    color:#c20458;
+    @include font-size(22px);
+    @include px2rem(letter-spacing, .9px);
+}
+.b-reccomend__subtitle{
+    @include font-size(12px);
+    color:$text-color;
+    text-transform:uppercase;
+}

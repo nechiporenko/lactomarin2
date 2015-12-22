@@ -97,10 +97,16 @@
       "src": "iconic"
     },
     {
-      "uid": "in76hg99crrkpcbz2rjnmgbiw74s72y0",
+      "uid": "ce50292e85eb5d6ee3be61b32bf2bdf3",
       "css": "ok",
       "code": 59394,
-      "src": "modernpics"
+      "src": "mfglabs"
+    },
+    {
+      "uid": "5e1ef647438e2204c15197c6efc4151e",
+      "css": "ok-circled",
+      "code": 59402,
+      "src": "mfglabs"
     }
   ]
 }

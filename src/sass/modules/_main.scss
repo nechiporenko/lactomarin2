@@ -92,6 +92,23 @@ ol ul {
     padding:0;
 }
 
+.g-styled-list{
+    list-style-type:none;
+    padding:0;
+
+    li{
+        &:before{
+            content:'\e80a';
+            font-family:'fontello';
+            margin-right:14px;
+            color:$primary-alt;
+            opacity:.8;
+            font-size:120%;
+            vertical-align:middle;
+        }
+    }
+}
+
 
 /* Spacing */
 p {
