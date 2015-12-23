@@ -9,7 +9,141 @@
         color:#fff;
     }
 }
-.b-stepss__list{
+.b-steps__list{
     @extend .g-clearlist;
+    @extend .g-clearfix;
+}
+.b-steps__item{
+    float:left;
+    width:100%;
+    min-height:1px;
+    box-sizing:border-box;
+    text-align:center;
 
+    @include media($tablet){
+        @include span-columns(6);
+        @include omega(2n);
+    }
+
+    @include media($desktop){
+        @include span-columns(3);
+        @include omega-reset(2n);
+        @include omega(4n);
+    }
+
+    &:first-child{
+        .b-steps__thumb{
+            &:before{
+                display:none;
+            }
+        }
+    }
+
+    &:nth-child(8n-4){
+        .b-steps__thumb{
+            &:after{
+                @include media($desktop){
+                    display:block;
+                }
+            }
+        }
+    }
+}
+
+.b-steps__thumb{
+    margin:0 0 40px 0;
+    @include px2rem(height, 216px);
+    padding:0;
+    border:2px solid #fff;
+    box-sizing:border-box;
+    position:relative;
+
+    &:before,
+    &:after{
+        content:'';
+        width:20px;
+        height:20px;
+        background:url(../img/b-steps/b-steps.png) 0 -400px no-repeat;
+        position:absolute;
+        top:50%;
+        margin-top:-10px;
+        display:none;
+
+        @include media($desktop){
+            display:block;
+        }
+    }
+
+    &:before{
+        @include px2rem(left, -23px);
+    }
+    &:after{
+        @include px2rem(right, -23px);
+        display:none;
+    }
+}
+
+.b-steps__icon{
+    display:block;
+    width:70px;
+    height:50px;
+    @include px2rem(margin, 10px auto);
+    background-image:url(../img/b-steps/b-steps.png);
+    background-repeat:no-repeat;
+}
+.b-steps__icon--1{
+    background-position:0 0;
+}
+.b-steps__icon--2{
+    background-position:0 -50px;
+}
+.b-steps__icon--3{
+    background-position:0 -100px;
+}
+.b-steps__icon--4{
+    background-position:0 -150px;
+}
+.b-steps__icon--5{
+    background-position:0 -200px;
+}
+.b-steps__icon--6{
+    background-position:0 -250px;
+}
+.b-steps__icon--7{
+    background-position:0 -300px;
+}
+.b-steps__icon--8{
+    background-position:0 -350px;
+}
+
+.b-steps__num{
+    display:block;
+    margin-bottom:10px;
+    @include font-size(18px);
+    text-transform:uppercase;
+}
+.b-steps__title{
+    display:block;
+    padding:0 10px;
+    margin-bottom:10px;
+    @include font-size(24px);
+}
+.b-steps__caption{
+    padding:0 10px;
+    @include font-size(16px);
+    line-height:1.125;
+    font-weight:300;
+
+    p{
+        margin-bottom:15px;
+    }
+}
+
+.b-steps__btn{
+    @extend .g-btn;
+    margin:0;
+
+    @include media($desktop){
+        width:100%;
+    }
 }
