@@ -390,7 +390,7 @@ ul ul, ul ol, ol ol, ol ul {
   margin: 9px 0 9px 30px;
   margin: 0.5625rem 0 0.5625rem 1.875rem; }
 
-.g-clearlist, .h-menu, .m-menu, .m-submenu, .b-info__list, .r-slider__list, .b-counters__list {
+.g-clearlist, .h-menu, .m-menu, .m-submenu, .b-info__list, .r-slider__list, .b-counters__list, .b-stepss__list {
   list-style-type: none;
   margin: 0;
   padding: 0; }
@@ -527,7 +527,7 @@ img.g-img-right {
   max-width: 100%;
   box-sizing: border-box; }
 
-.g-as-table, .b-banner__inner {
+.g-as-table, .b-banner__inner, .b-banner__caption {
   display: table;
   width: 100%;
   height: 100%;
@@ -1254,7 +1254,7 @@ input[type="checkbox"], input[type="radio"] {
       text-align: right; } }
 
 .b-banner__info {
-  margin-bottom: 32px;
+  margin-bottom: 31px;
   font-size: 14px;
   font-size: 0.875rem;
   font-weight: 300;
@@ -1275,9 +1275,9 @@ input[type="checkbox"], input[type="radio"] {
 
 .b-banner__item {
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 15px;
   padding-left: 80px;
-  min-height: 50px;
+  height: 51px;
   position: relative;
   font-size: 18px;
   font-size: 1.125rem;
@@ -1307,6 +1307,11 @@ input[type="checkbox"], input[type="radio"] {
 
 .b-banner__item--4:before {
   background-position: 0 -153px; }
+
+.b-banner__text {
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle; }
 
 /*Consultation Block*/
 .b-consultation {

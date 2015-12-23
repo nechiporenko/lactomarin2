@@ -81,7 +81,7 @@
 }
 
 .b-banner__info{
-    margin-bottom:32px;
+    margin-bottom:31px;
     @include font-size(14px);
     font-weight:300;
     text-align:center;
@@ -104,9 +104,9 @@
 }
 .b-banner__item{
     display:block;
-    margin-bottom:16px;
+    margin-bottom:15px;
     padding-left:80px;
-    min-height:50px;
+    height:51px;
     position:relative;
     @include font-size(18px);
     line-height:1.3;
@@ -147,4 +147,13 @@
     &:before{
         background-position:0 -153px;
     }
+}
+
+.b-banner__caption{
+    @extend .g-as-table;
+}
+.b-banner__text{
+    margin:0;
+    display:table-cell;
+    vertical-align:middle;
 }
