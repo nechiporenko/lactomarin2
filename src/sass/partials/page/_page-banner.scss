@@ -2,11 +2,24 @@
 /*Inner Page Banner*/
 .p-banner{
     padding:30px 0;
-    background-color:#d8f2d5;
     background-position:center bottom;
     background-repeat:no-repeat;
     background-size:cover;
     box-sizing:border-box;
+    position:relative;
+
+    &:before{
+        content:'';
+        display:block;
+        position:absolute;
+        top:0; right:0; bottom:0; left:0;
+        @include linear-gradient(to bottom, #e6f2e8, #b7cbca);
+        z-index:-1;
+    }
+
+    @include media(max-width em(544)){
+        background-image:none !important;
+    }
 
     @include media($tablet){
         padding:37px 0 0;
@@ -56,14 +69,24 @@
 }
 
 .p-banner__list{
-    @extend .g-styled-list;
-    margin-bottom:45px;
+    list-style-type:none;
+    padding:0;
+    margin:0 0 45px 0;
     @include font-size(18px);
     font-weight:300;
 
     li{
         display:block;
         margin-bottom:8px;
+
+        &:before{
+            content:'\e80a';
+            font-family:'fontello';
+            margin-right:14px;
+            color:#8bdfbe;
+            font-size:120%;
+            vertical-align:middle;
+        }
     }
 }
 

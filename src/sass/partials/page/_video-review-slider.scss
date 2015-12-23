@@ -1,9 +1,8 @@
 ﻿@import "../../modules/_base.scss";
 /*Video Review Slider*/
 .r-slider{
-    padding:30px 0;
+    @extend .p-block;
     background:#f9f9f9;
-    border-bottom:1px solid $border-color;
 
     .bx-wrapper{
         .bx-controls-direction a{

@@ -12,3 +12,52 @@
 @import "page/_page-banner.scss";//баннер внутренней страницы
 @import "page/_scroll-up.scss";
 
+
+/*Standart Page Info Block*/
+.p-block{
+    padding:30px 0;
+    background:#fff;
+    border-bottom:1px solid $border-color;
+}
+
+.p-block--alt{
+    background:#f9f9f9;
+}
+
+/*Standart Page Info Block Buttons List*/
+.p-btn-list{
+    list-style-type:none;
+    padding:0;
+    margin:24px 0 15px;
+    font-size:0;
+    text-align:center;
+
+    @include media($tablet){
+        text-align:right;
+    }
+}
+.p-btn-list__item{
+    display:block;
+    @include font-size(16px);
+
+    @include media($tablet){
+        display:inline-block;
+        margin-left:14px;
+        &:first-child{
+            margin-left:0;
+        }
+    }
+}
+
+.p-btn-list__btn{
+    @extend .g-btn;
+    width:220px;
+
+    @include media($tablet){
+        width:auto;
+    }
+}
+.p-btn-list__btn--clear{
+    @extend .g-btn--clear;
+}
+

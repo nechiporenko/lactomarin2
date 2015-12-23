@@ -92,22 +92,40 @@ ol ul {
     padding:0;
 }
 
-.g-styled-list{
-    list-style-type:none;
-    padding:0;
+
+.g-styled-ol-list{
+    margin:0;
+    padding:0 0 0 45px;
+    counter-reset:li;
+    text-align:left;
+    @include font-size(16px);
+    font-weight:300;
+    line-height:1.125;
 
     li{
+        margin:18px 0;
+        position:relative;
+        list-style:none;
+
         &:before{
-            content:'\e80a';
-            font-family:'fontello';
-            margin-right:14px;
-            color:$primary-alt;
-            opacity:.8;
-            font-size:120%;
-            vertical-align:middle;
+            content:counter(li);
+            counter-increment:li;
+            display:block;
+            @include px2rem(width, 24px);
+            @include px2rem(height, 24px);
+            @include px2rem(line-height, 24px);
+            text-align:center;
+            border-radius:50%;
+            background:#0aaca9;
+            color:#fff;
+            @include font-size(16px);
+            position:absolute;
+            left:-45px; top:-3px;
         }
     }
 }
+
+
 
 
 /* Spacing */

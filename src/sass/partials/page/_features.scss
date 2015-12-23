@@ -1,9 +1,7 @@
 ﻿@import "../../modules/_base.scss";
 /*Features block*/
 .b-features{
-    padding:30px 0;
-    background:#fff;
-    border-bottom:1px solid $border-color;
+    @extend .p-block;
 }
 
 .b-features__list{

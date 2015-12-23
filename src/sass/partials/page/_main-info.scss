@@ -1,8 +1,7 @@
 ﻿@import "../../modules/_base.scss";
 /*Main Info Block*/
 .b-info{
-    padding:30px 0;
-    border-bottom:1px solid $border-color;
+    @extend .p-block;
     background-color:#f9f9f9;
 
     .g-title{
