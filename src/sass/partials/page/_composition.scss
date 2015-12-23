@@ -1,0 +1,45 @@
+﻿@import "../../modules/_base.scss";
+/*Composition Section*/
+.b-composition{
+    @extend .p-block;
+    text-align:center;
+}
+.b-composition__item{
+    margin-bottom:30px;
+}
+.b-composition__img{
+    @extend .g-max-full-width;
+    max-width:101px;
+    margin-bottom:15px;
+}
+.b-composition__info{
+    @include font-size(14px);
+    font-weight:300;
+}
+.b-composition__title{
+    @extend .g-title;
+    margin-bottom:15px;
+    color:#0aaca9;
+}
+
+.b-composition__product{
+    position:relative;
+
+    &:before{
+        content:'';
+        width:388px;
+        height:411px;
+        position:absolute;
+        top:0;
+        left:50%;
+        margin-left:-194px;
+        background:url(../img/b-composition/arrows.png);
+        display:none;
+    }
+
+    @include media($tablet){
+        &:before{
+            display:block;
+        }
+    }
+}
