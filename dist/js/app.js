@@ -91,6 +91,7 @@ jQuery.extend(verge);
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
 // Слайдер видео-ревью
+// Счетчики
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
 
@@ -375,7 +376,49 @@ jQuery(document).ready(function ($) {
             return urllink;
         }
     }
-    if ($('.js-review-slider').length) { initReviewSlider();}
+    if ($('.js-review-slider').length) { initReviewSlider(); }
+
+    //
+    // Счетчики
+    //---------------------------------------------------------------------------------------
+    function initCounters() {
+        var $counter = $('.js-counter');
+        $counter.each(function () {
+            var $el = $(this);
+            if (verge.inViewport($el)) {//если оказались видимы при загрузке страницы - запускаем
+                startCounter($el);
+            } else {
+                checkPosition($el);
+            }
+        });
+
+        function checkPosition(el) {
+            $window.bind('scroll', scrollToCounter);
+
+            function scrollToCounter() {
+                var flag = verge.inViewport(el, -50);
+                if (flag) {
+                    $window.unbind('scroll', scrollToCounter);//прибили отслеживание для этого счетчика
+                    startCounter(el); //запустили
+                }
+            }
+        }
+
+        function startCounter(el) {
+            el.each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 4000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+        }
+    }
+    if($('.js-counter').length){initCounters()}
 
     //
     // Если браузер не знает о svg-картинках

@@ -1,0 +1,106 @@
+﻿@import "../../modules/_base.scss";
+/*Counters*/
+.b-counters{
+    padding:15px 0;
+    background:#fff;
+    border-bottom:1px solid $border-color;
+    @include media($desktop){
+        padding:11px 0 0;
+    }
+}
+.b-counters__list{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+}
+.b-counters__item{
+    float:left;
+    padding:0 5px;
+    width:100%;
+    text-align:center;
+    box-sizing:border-box;
+
+    @include media($tablet){
+        width:25%;
+        &:first-child{
+            width:100%;
+        }
+    }
+
+    @include media($desktop){
+        width:17%;
+
+        &:first-child{
+            width:32%;
+        }
+    }
+}
+.b-counters__region,
+.b-counters__count{
+    position:relative;
+    box-sizing:border-box;
+
+    @include media($desktop){
+        height:158px;
+        margin:0;
+    }
+}
+
+.b-counters__img{
+    height:158px;
+    margin-bottom:10px;
+}
+
+@include media($desktop){
+    .b-counters__region{
+        padding-top:20px;
+        text-align:right;
+    }
+    .b-counters__img{
+        position:absolute;
+        top:0;
+        left:-40px;
+    }
+    .b-counters__count{
+        padding-top:13px;
+    }
+    .b-counters__caption,
+    .b-counters__name{
+        position:absolute;
+        width:100%;
+        bottom:15px;
+    }
+}
+
+.b-counters__title{
+    display:block;
+    line-height:1;
+    @include font-size(18px);
+    color:#0aaca9;
+    font-weight:500;
+    text-transform:uppercase;
+}
+.b-counters__subtitle{
+    display:block;
+    @include font-size(16px);
+    color:$primary-alt;
+}
+.b-counters__name{
+    @include font-size(14px);
+    color:$primary-bright;
+    font-weight:300;
+}
+
+
+.b-counters__num{
+    margin-bottom: 20px;
+    color: #0aaca9;
+    @include font-size(48px);
+    line-height: 100%;
+    font-weight:500;
+    @include px2rem(letter-spacing, -5px);
+}
+
+.b-counters__caption{
+    @extend .b-counters__name;
+    color:$primary;
+}
