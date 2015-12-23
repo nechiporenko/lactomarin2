@@ -1,0 +1,11 @@
+﻿@import "../../modules/_base.scss";
+/*Order Steps Block*/
+.b-steps{
+    padding:30px 0;
+    @include linear-gradient(to bottom, #0aaca9, #20c38a);
+    color:#fff;
+
+    .g-title{
+        color:#fff;
+    }
+}

@@ -4,7 +4,7 @@
     padding:30px 0 23px;
     background-color:#509998;
     background-image:url(../img/b-banner/b-banner-sm.jpg);
-    background-position:center top;
+    background-position:center bottom;
     background-repeat:no-repeat;
     background-size:cover;
     color:#fff;
@@ -16,8 +16,7 @@
         display:block;
         position:absolute;
         top:0; right:0; bottom:0; left:0;
-        background-color:rgba($primary-alt, .3);
-        @include background-image(url(../img/b-banner/pattern.png), linear-gradient(to bottom, rgba($primary, .2), rgba(#012e2d, .7)));
+        background:rgba(#00497f, .3) url(../img/b-banner/pattern.png) repeat;
         z-index:-1;
     }
 
