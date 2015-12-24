@@ -1,0 +1,136 @@
+﻿@import "../../modules/_base.scss";
+/*Sertificates Section*/
+.b-sert{
+    @extend .p-block;
+}
+
+.b-sert__inner{
+    @extend .g-inner;
+    position:relative;
+}
+
+.b-sert__col{
+    float:left;
+    width:100%;
+    min-height:1px;
+    box-sizing:border-box;
+}
+
+
+.b-sert__person{
+    text-align:center;
+    position:relative;
+}
+
+.b-sert__photo{
+    margin-bottom:18px;
+}
+.b-sert__caption{
+    color:$title-color;
+    line-height:1.2;
+}
+.b-sert__name{
+    display:block;
+    font-weight:300;
+    @include font-size(20px);
+    
+}
+.b-sert__position{
+    @include font-size(18px);
+    font-weight:500;
+}
+
+
+.b-sert__list{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+}
+.b-sert__item{
+    float:left;
+    width:100%;
+    text-align:center;
+
+    @include media($small){
+        @include span-columns(6);
+        @include omega(2n);
+    }
+
+    @include media($tablet){
+        @include span-columns(3);
+        @include omega-reset(2n);
+        @include omega(4n);
+        text-align:right;
+    }
+}
+
+.b-sert__img{
+    @extend .g-max-full-width;
+    margin-bottom:18px;
+}
+
+@include media($desktop){
+    .b-sert__col--person{
+        width:(100% - $grid-gutter*3)/4;
+    }
+    .b-sert__col--main{
+        width:74.4105871005%;
+        margin-left:$grid-gutter;
+    }
+    .b-sert__photo{
+        margin:0;
+    }
+    .b-sert__caption{
+        position:absolute;
+        left:100%;
+        bottom:-5px;
+        padding-left:38px;
+        text-align:left;
+    }
+
+    .b-sert__position{
+        white-space:nowrap;
+    }
+
+    .b-sert__img{
+        max-width:146px;
+    }
+}
+
+/*Sertificate Section Halal Logo*/
+.b-halal{
+    text-align:center;
+    position:relative;
+}
+.b-halal__img{
+    width:54px;
+    height:54px;
+}
+.b-halal__caption{
+    font-weight:300;
+    color:$title-color;
+    @include font-size(20px);
+    line-height:1.2;
+}
+.b-halal__title{
+    display:block;
+    white-space:nowrap;
+    font-weight:500;
+    @include font-size(18px);
+}
+
+@include media($desktop){
+    .b-halal{
+        width:250px;
+        position:absolute;
+        bottom:-8px;
+        right:0;
+        text-align:left;
+    }
+
+    .b-halal__caption{
+        position:absolute;
+        left:65px;
+        top:5px;
+    }
+}
+

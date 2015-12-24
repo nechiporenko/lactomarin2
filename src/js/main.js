@@ -6,7 +6,9 @@
 // Кнопка скролла страницы
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
+// Лайтбокс
 // Слайдер видео-ревью
+// Слайдер сертификатов
 // Счетчики
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
@@ -187,6 +189,12 @@ jQuery(document).ready(function ($) {
     //---------------------------------------------------------------------------------------
     $('.js-match-height').matchHeight();
 
+    //
+    // Лайтбокс
+    //---------------------------------------------------------------------------------------
+    $('.js-popup').lightbox({
+        blur: false
+    });
 
     //
     // Слайдер видео-ревью
@@ -295,6 +303,73 @@ jQuery(document).ready(function ($) {
     if ($('.js-review-slider').length) { initReviewSlider(); }
 
     //
+    // Слайдер сертификатов
+    //---------------------------------------------------------------------------------------
+    function initSertSlider() {
+        var $slider = $('.js-sert-slider'),
+            winW = verge.viewportW(); //точная ширина окна браузера
+
+        $slider.children('li').find('a').lightbox({blur:false});
+
+        getSliderSettings = function () {//будем показывать разное кол-во слайдов на разных разрешениях
+            var setting,
+                settings1 = {
+                    maxSlides: 1,
+                    moveSlides: 1,
+                },
+                settings2 = {
+                    maxSlides: 2,
+                    moveSlides: 2,
+                },
+                settings3 = {
+                    maxSlides: 3,
+                    moveSlides: 3,
+                },
+                settings4 = {
+                    maxSlides: 4,
+                    moveSlides: 4,
+                },
+                common = {
+                    auto: true,
+                    pause: 7000,
+                    autoHover:true,
+                    pager: false,
+                    minSlides: 1,
+                    slideWidth: 205,
+                    slideMargin: 40,
+                };
+
+            if (winW < 480) {
+                setting = $.extend(settings1, common);
+            }
+            if (winW >= 480 && winW < 768) {
+                setting = $.extend(settings2, common);
+            }
+            if (winW >= 768 && winW < 1024) {
+                setting = $.extend(settings3, common);
+            }
+            if (winW >= 1024) {
+                setting = $.extend(settings4, common);
+            }
+            return setting;
+        }
+
+        $slider = $slider.bxSlider(getSliderSettings()); //запускаем слайдер
+
+        $window.on('resize', function () {
+            setTimeout(recalcSliderSettings, 500);
+        });
+
+        function recalcSliderSettings() {
+            winW = verge.viewportW();
+            
+            $slider.reloadSlider($.extend(getSliderSettings(), { startSlide: $slider.getCurrentSlide() }));
+        }
+
+    }
+    if($('.js-sert-slider').length){initSertSlider()}
+
+    //
     // Счетчики
     //---------------------------------------------------------------------------------------
     function initCounters() {
@@ -381,6 +456,8 @@ jQuery(document).ready(function ($) {
     if ($html.hasClass('lt-ie9')) {
         $('.b-features__item:nth-child(4n)').css('margin-right', 0);
         $('.b-features__item:nth-child(4n+1)').css('clear', 'left');
+        $('.b-steps__item:nth-child(4n)').css('margin-right', 0);
+        $('.b-sert__item:nth-child(4n)').css('margin-right', 0);
     }
    
 

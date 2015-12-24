@@ -1,0 +1,42 @@
+﻿@import "../../modules/_base.scss";
+/*Sertificates Slider*/
+.sert-slider{
+    @extend .p-block;
+    @extend .p-block--alt;
+
+    .bx-wrapper{
+        margin:0 auto;
+
+        .bx-prev{
+            left:-30px;
+
+            @include media($mobile){
+                left:10px;
+            }
+
+            @include media($desktop){
+                left:-30px;
+            }
+        }
+        .bx-next{
+            right:-30px;
+            @include media($mobile){
+                right:10px;
+            }
+            @include media($desktop){
+                right:-30px;
+            }
+        }
+    }
+}
+.sert-list{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+}
+.sert-list__item{
+    float:left;
+    text-align:center;
+}
+.sert-list__img{
+    @extend .g-max-full-width;
+}
