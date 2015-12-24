@@ -7,8 +7,10 @@
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
 // Лайтбокс
+// Аудиоплеер
 // Слайдер видео-ревью
 // Слайдер сертификатов
+// Слайдер отзывов (видео+текст, аудио+текст)
 // Счетчики
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
@@ -197,6 +199,11 @@ jQuery(document).ready(function ($) {
     });
 
     //
+    // Аудиоплеер
+    //---------------------------------------------------------------------------------------------------------------
+    $('audio').audioPlayer();
+
+    //
     // Слайдер видео-ревью
     //---------------------------------------------------------------------------------------
     function initReviewSlider() {
@@ -302,6 +309,7 @@ jQuery(document).ready(function ($) {
     }
     if ($('.js-review-slider').length) { initReviewSlider(); }
 
+
     //
     // Слайдер сертификатов
     //---------------------------------------------------------------------------------------
@@ -367,7 +375,26 @@ jQuery(document).ready(function ($) {
         }
 
     }
-    if($('.js-sert-slider').length){initSertSlider()}
+    if ($('.js-sert-slider').length) { initSertSlider() }
+
+    //
+    // Слайдер отзывов (видео+текст, аудио+текст)
+    //---------------------------------------------------------------------------------------
+    function initVideoSlider() {
+        var $slider = $('.js-slider-video');
+        $slider.bxSlider({
+            auto: false
+        });
+    }
+    if ($('.js-slider-video').length) { initVideoSlider() }
+
+    function initAudioSlider() {
+        var $slider = $('.js-slider-audio');
+        $slider.bxSlider({
+            auto: false
+        });
+    }
+    if ($('.js-slider-audio').length) { initAudioSlider() }
 
     //
     // Счетчики

@@ -97,6 +97,14 @@ jQuery.extend(verge);
  */
 !function (t) { "use strict"; t.fn.lightbox = function (i) { var e = { margin: 50, nav: !0, blur: !0, minSize: 0 }, n = { items: [], lightbox: null, image: null, current: null, locked: !1, caption: null, init: function (i) { n.items = i, n.selector = "lightbox-" + Math.random().toString().replace(".", ""); var o = "lightbox-" + Math.floor(1e5 * Math.random() + 1); n.lightbox || (t("body").append('<div id="' + o + '" class="lightbox" style="display:none;"><a href="#" class="lightbox__close lightbox__button"></a><a href="#" class="lightbox__nav lightbox__nav--prev lightbox__button"></a><a href="#" class="lightbox__nav lightbox__nav--next lightbox__button"></a><div href="#" class="lightbox__caption"><p></p></div></div>'), n.lightbox = t("#" + o), n.caption = t(".lightbox__caption", n.lightbox)), n.items.length > 1 && e.nav ? t(".lightbox__nav", n.lightbox).show() : t(".lightbox__nav", n.lightbox).hide(), n.bindEvents() }, loadImage: function () { e.blur && t("body").addClass("blurred"), t("img", n.lightbox).remove(), n.lightbox.fadeIn("fast").append('<span class="lightbox__loading"></span>'); var i = t('<img src="' + t(n.current).attr("href") + '" draggable="false">'); t(i).load(function () { t(".lightbox__loading").remove(), n.lightbox.append(i), n.image = t("img", n.lightbox).hide(), n.resizeImage(), n.setCaption() }) }, setCaption: function () { var i = t(n.current).data("caption"); i && i.length > 0 ? (n.caption.fadeIn(), t("p", n.caption).text(i)) : n.caption.hide() }, resizeImage: function () { var i, o, l, a, r; o = t(window).height() - e.margin, l = t(window).outerWidth(!0) - e.margin, n.image.width("").height(""), a = n.image.height(), r = n.image.width(), r > l && (i = l / r, r = l, a = Math.round(a * i)), a > o && (i = o / a, a = o, r = Math.round(r * i)), n.image.width(r).height(a).css({ top: (t(window).height() - n.image.outerHeight()) / 2 + "px", left: (t(window).width() - n.image.outerWidth()) / 2 + "px" }).show(), n.locked = !1 }, getCurrentIndex: function () { return t.inArray(n.current, n.items) }, next: function () { return n.locked ? !1 : (n.locked = !0, void (n.getCurrentIndex() >= n.items.length - 1 ? t(n.items[0]).click() : t(n.items[n.getCurrentIndex() + 1]).click())) }, previous: function () { return n.locked ? !1 : (n.locked = !0, void (n.getCurrentIndex() <= 0 ? t(n.items[n.items.length - 1]).click() : t(n.items[n.getCurrentIndex() - 1]).click())) }, bindEvents: function () { t(n.items).click(function (i) { if (!n.lightbox.is(":visible") && (t(window).width() < e.minSize || t(window).height() < e.minSize)) return void t(this).attr("target", "_blank"); var o = t(this)[0]; i.preventDefault(), n.current = o, n.loadImage(), t(document).on("keydown", function (t) { 27 === t.keyCode && n.close(), 39 === t.keyCode && n.next(), 37 === t.keyCode && n.previous() }) }), n.lightbox.on("click", function (t) { this === t.target && n.close() }), t(n.lightbox).on("click", ".lightbox__nav--prev", function () { return n.previous(), !1 }), t(n.lightbox).on("click", ".lightbox__nav--next", function () { return n.next(), !1 }), t(n.lightbox).on("click", ".lightbox__close", function () { return n.close(), !1 }), t(window).resize(function () { n.image && n.resizeImage() }) }, close: function () { t(document).off("keydown"), t(n.lightbox).fadeOut("fast"), t("body").removeClass("blurred") } }; t.extend(e, i), n.init(this) } }(jQuery);
 
+/*
+    AudioPlayer
+    http://osvaldas.info/audio-player-responsive-and-touch-friendly
+	AUTHOR: Osvaldas Valutis, www.osvaldas.info
+*/
+!function (e, t, a, i) { var n = "ontouchstart" in t, o = n ? "touchstart" : "mousedown", d = n ? "touchmove" : "mousemove", l = n ? "touchcancel" : "mouseup", u = function (e) { var t = e / 3600, a = Math.floor(t), i = e % 3600 / 60, n = Math.floor(i), o = Math.ceil(e % 3600 % 60); return o > 59 && (o = 0, n = Math.ceil(i)), n > 59 && (n = 0, a = Math.ceil(t)), (0 == a ? "" : a > 0 && a.toString().length < 2 ? "0" + a + ":" : a + ":") + (n.toString().length < 2 ? "0" + n : n) + ":" + (o.toString().length < 2 ? "0" + o : o) }, r = function (e) { var t = a.createElement("audio"); return !(!t.canPlayType || !t.canPlayType("audio/" + e.split(".").pop().toLowerCase() + ";").replace(/no/, "")) }; e.fn.audioPlayer = function (t) { var t = e.extend({ classPrefix: "audioplayer", strPlay: "Play", strPause: "Pause", strVolume: "Volume" }, t), a = {}, i = { playPause: "playpause", playing: "playing", stopped: "stopped", time: "time", timeCurrent: "time-current", timeDuration: "time-duration", bar: "bar", barLoaded: "bar-loaded", barPlayed: "bar-played", volume: "volume", volumeButton: "volume-button", volumeAdjust: "volume-adjust", noVolume: "novolume", muted: "muted", mini: "mini" }; for (var s in i) a[s] = t.classPrefix + "-" + i[s]; return this.each(function () { if ("audio" != e(this).prop("tagName").toLowerCase()) return !1; var i = e(this), s = i.attr("src"), v = i.get(0).getAttribute("autoplay"), v = "" === v || "autoplay" === v ? !0 : !1, m = i.get(0).getAttribute("loop"), m = "" === m || "loop" === m ? !0 : !1, c = !1; "undefined" == typeof s ? i.find("source").each(function () { return s = e(this).attr("src"), "undefined" != typeof s && r(s) ? (c = !0, !1) : void 0 }) : r(s) && (c = !0); var h = e('<div class="' + t.classPrefix + '">' + (c ? e("<div>").append(i.eq(0).clone()).html() : '<embed src="' + s + '" width="0" height="0" volume="100" autostart="' + v.toString() + '" loop="' + m.toString() + '" />') + '<div class="' + a.playPause + '" title="' + t.strPlay + '"><a href="#">' + t.strPlay + "</a></div></div>"), f = c ? h.find("audio") : h.find("embed"), f = f.get(0); if (c) { h.find("audio").css({ width: 0, height: 0, visibility: "hidden" }), h.append('<div class="' + a.time + " " + a.timeCurrent + '"></div><div class="' + a.bar + '"><div class="' + a.barLoaded + '"></div><div class="' + a.barPlayed + '"></div></div><div class="' + a.time + " " + a.timeDuration + '"></div><div class="' + a.volume + '"><div class="' + a.volumeButton + '" title="' + t.strVolume + '"><a href="#">' + t.strVolume + '</a></div><div class="' + a.volumeAdjust + '"><div><div></div></div></div></div>'); var p = h.find("." + a.bar), y = h.find("." + a.barPlayed), g = h.find("." + a.barLoaded), b = h.find("." + a.timeCurrent), P = h.find("." + a.timeDuration), C = h.find("." + a.volumeButton), E = h.find("." + a.volumeAdjust + " > div"), w = 0, M = function (e) { theRealEvent = n ? e.originalEvent.touches[0] : e, f.currentTime = Math.round(f.duration * (theRealEvent.pageX - p.offset().left) / p.width()) }, L = function (e) { theRealEvent = n ? e.originalEvent.touches[0] : e, f.volume = Math.abs((theRealEvent.pageY - (E.offset().top + E.height())) / E.height()) }, S = function () { var e = setInterval(function () { return f.buffered.length < 1 ? !0 : (g.width(f.buffered.end(0) / f.duration * 100 + "%"), void (Math.floor(f.buffered.end(0)) >= Math.floor(f.duration) && clearInterval(e))) }, 100) }, V = f.volume, j = f.volume = .111; Math.round(1e3 * f.volume) / 1e3 == j ? f.volume = V : h.addClass(a.noVolume), P.html("&hellip;"), b.html(u(0)), f.addEventListener("loadeddata", function () { S(), P.html(e.isNumeric(f.duration) ? u(f.duration) : "&hellip;"), E.find("div").height(100 * f.volume + "%"), w = f.volume }), f.addEventListener("timeupdate", function () { b.html(u(f.currentTime)), y.width(f.currentTime / f.duration * 100 + "%") }), f.addEventListener("volumechange", function () { E.find("div").height(100 * f.volume + "%"), f.volume > 0 && h.hasClass(a.muted) && h.removeClass(a.muted), f.volume <= 0 && !h.hasClass(a.muted) && h.addClass(a.muted) }), f.addEventListener("ended", function () { h.removeClass(a.playing).addClass(a.stopped) }), p.on(o, function (e) { M(e), p.on(d, function (e) { M(e) }) }).on(l, function () { p.unbind(d) }), C.on("click", function () { return h.hasClass(a.muted) ? (h.removeClass(a.muted), f.volume = w) : (h.addClass(a.muted), w = f.volume, f.volume = 0), !1 }), E.on(o, function (e) { L(e), E.on(d, function (e) { L(e) }) }).on(l, function () { E.unbind(d) }) } else h.addClass(a.mini); h.addClass(v ? a.playing : a.stopped), h.find("." + a.playPause).on("click", function () { return h.hasClass(a.playing) ? (e(this).attr("title", t.strPlay).find("a").html(t.strPlay), h.removeClass(a.playing).addClass(a.stopped), c ? f.pause() : f.Stop()) : (e(this).attr("title", t.strPause).find("a").html(t.strPause), h.addClass(a.playing).removeClass(a.stopped), c ? f.play() : f.Play()), !1 }), i.replaceWith(h) }), this } }(jQuery, window, document);
+
+
 // Application Scripts:
 
 // Модальное окно
@@ -106,8 +114,10 @@ jQuery.extend(verge);
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
 // Лайтбокс
+// Аудиоплеер
 // Слайдер видео-ревью
 // Слайдер сертификатов
+// Слайдер отзывов (видео+текст, аудио+текст)
 // Счетчики
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
@@ -296,6 +306,11 @@ jQuery(document).ready(function ($) {
     });
 
     //
+    // Аудиоплеер
+    //---------------------------------------------------------------------------------------------------------------
+    $('audio').audioPlayer();
+
+    //
     // Слайдер видео-ревью
     //---------------------------------------------------------------------------------------
     function initReviewSlider() {
@@ -401,6 +416,7 @@ jQuery(document).ready(function ($) {
     }
     if ($('.js-review-slider').length) { initReviewSlider(); }
 
+
     //
     // Слайдер сертификатов
     //---------------------------------------------------------------------------------------
@@ -466,7 +482,26 @@ jQuery(document).ready(function ($) {
         }
 
     }
-    if($('.js-sert-slider').length){initSertSlider()}
+    if ($('.js-sert-slider').length) { initSertSlider() }
+
+    //
+    // Слайдер отзывов (видео+текст, аудио+текст)
+    //---------------------------------------------------------------------------------------
+    function initVideoSlider() {
+        var $slider = $('.js-slider-video');
+        $slider.bxSlider({
+            auto: false
+        });
+    }
+    if ($('.js-slider-video').length) { initVideoSlider() }
+
+    function initAudioSlider() {
+        var $slider = $('.js-slider-audio');
+        $slider.bxSlider({
+            auto: false
+        });
+    }
+    if ($('.js-slider-audio').length) { initAudioSlider() }
 
     //
     // Счетчики

@@ -1,0 +1,101 @@
+﻿@import "../../modules/_base.scss";
+/*Review (video + text, audio + text) Slider*/
+.rv-slider{
+    @extend .p-block;
+
+    .audioplayer{
+        max-width:300px;
+        margin:0 auto 18px;
+
+        @include media($desktop){
+            margin-bottom:0;
+        }
+    }
+}
+.rv-slider--alt{
+    @extend .p-block--alt;
+}
+.rv-slider__list{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+}
+.rv-slider__item{
+    float:left;
+    width:100%;
+}
+
+.rv-slider__col{
+    float:left;
+    width:100%;
+    min-height:1px;
+}
+
+@include media($desktop){
+    .rv-slider__col{
+        width:(100%-$grid-gutter)/2;
+        margin-left:$grid-gutter;
+
+        &:first-child{
+            margin-left:0;
+        }
+    }
+
+    .rv-slider__col--thin{
+        width:(100%-$grid-gutter*2)/3;
+    }
+    .rv-slider__col--wide{
+        width: 2*(100%-$grid-gutter*2)/3 + $grid-gutter;
+    }
+}
+
+.rv-slider__video{
+    max-width:460px;
+    margin:0 auto 18px;
+
+    @include media($desktop){
+        margin-bottom:0;
+    }
+}
+
+.rv-slider__quote{
+    margin:0;
+    padding:0;
+    font-weight:300;
+    text-align:left;
+}
+
+.rv-slider__title{
+    display:block;
+    margin-bottom:7px;
+    @include font-size(18px);
+    font-weight:500;
+    color:$title-color;
+    line-height:1.2;
+    text-align:center;
+
+    @include media($desktop){
+        text-align:left;
+    }
+}
+
+.rv-slider__user{
+    font-weight:300;
+    text-align:center;
+
+    @include media($desktop){
+        text-align:left;
+    }
+}
+
+.rv-slider__photo{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    margin-bottom:10px;
+}
+.rv-slider__username{
+    display:block;
+    @include font-size(18px);
+    color:$title-color;
+    font-weight:500;
+}
