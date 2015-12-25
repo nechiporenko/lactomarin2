@@ -1,0 +1,25 @@
+﻿@import "../../modules/_base.scss";
+/*Interactive (SVG) Map*/
+.i-map{}
+.i-map__object{
+    width:100%;
+	height:auto;
+    visibility:hidden;
+}
+
+.i-map__img{
+    width:100%;
+    height:auto;
+    display:none;
+}
+
+.no-svg .i-map__img{
+    display:block;
+}
+.no-js .i-map__object{
+    visibility:visible;
+}
+
+.no-svg .i-map__object{
+    display:none;
+}

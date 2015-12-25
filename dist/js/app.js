@@ -122,6 +122,28 @@ jQuery.extend(verge);
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
 
+
+//функции добавления/удаления класса для SVG
+jQuery.fn.svgAddClass = function (classTitle) {
+    return this.each(function () {
+        var oldClass = jQuery(this).attr("class");
+        oldClass = oldClass ? oldClass : '';
+        jQuery(this).attr("class", (oldClass + " " + classTitle).trim());
+    });
+}
+jQuery.fn.svgRemoveClass = function (classTitle) {
+    return this.each(function () {
+        var oldClass = jQuery(this).attr("class");
+        var startpos = oldClass.indexOf(classTitle);
+        var endpos = startpos + classTitle.length;
+        var newClass = oldClass.substring(0, startpos).trim() + " " + oldClass.substring(endpos).trim();
+        if (!newClass.trim())
+            jQuery(this).removeAttr("class");
+        else
+            jQuery(this).attr("class", newClass.trim());
+    });
+}
+
 jQuery(document).ready(function ($) {
     //Кэшируем
     var $window = $(window),
@@ -543,7 +565,75 @@ jQuery(document).ready(function ($) {
             });
         }
     }
-    if($('.js-counter').length){initCounters()}
+    if ($('.js-counter').length) { initCounters() }
+
+    //
+    // SVG-карта
+    //---------------------------------------------------------------------------------------
+    $window.load(function () {
+        var svgobject = document.getElementById('imap');
+        if ('contentDocument' in svgobject) {
+            var svgdom = svgobject.contentDocument; // Получаем доступ к SVG DOM
+        }
+        $('#imap').css('visibility', 'visible'); //покажем после загрузки
+        var svgMap = {
+            areaLink: {
+                'KZ-AKM': 'country/kz-akm.html',
+                'KZ-AKT': 'country/kz-akt.html',
+                'KZ-ALM': 'country/kz-alm.html',
+                'KZ-ATY': 'country/kz-aty.html',
+                'KZ-KAR': 'country/kz-kar.html',
+                'KZ-KUS': 'country/kz-kus.html',
+                'KZ-KZY': 'country/kz-kzy.html',
+                'KZ-MAN': 'country/kz-man.html',
+                'KZ-PAV': 'country/kz-pav.html',
+                'KZ-SEV': 'country/kz-sev.html',
+                'KZ-VOS': 'country/kz-vos.html',
+                'KZ-YUZ': 'country/kz-yuz.html',
+                'KZ-ZAP': 'country/kz-zap.html',
+                'KZ-ZHA': 'country/kz-zha.html'
+            },
+            getAreaLink: function (id) {
+                return this.areaLink[id];
+            },
+            hoverToArea: function () {
+                $(svgdom.getElementsByClassName('area')).hover(function () {
+                    var id = $(this).attr('id'),
+                        link = svgMap.getAreaLink(id);
+                    if (link !== '') {
+                        $(this).svgAddClass('hover');
+                    }
+                },
+                function () {
+                    $(this).svgRemoveClass('hover');
+                });
+            },
+            clickToArea: function () {
+                $(svgdom.getElementsByClassName('area')).on('click', function () {
+                    var id = $(this).attr('id'),
+                        link = svgMap.getAreaLink(id),
+                        $target = $('#mapArea').find('.i-map__content');
+                    if (link !== '') {
+                        $target.html();
+                        $target.load(link + '#content', function () { showModal.open('#mapArea'); });
+                    }
+                });
+            },
+            sendRequest: function () {//закроем текущее модальное окно и откроем новое с формой отправки запроса
+                $('#mapArea').on('click', 'button', function () {
+                    showModal.close('#mapArea');
+                    showModal.open('#getClientNumber');
+                });
+            }
+        }
+
+        if (Modernizr.svg) {
+            svgMap.hoverToArea();
+            svgMap.clickToArea();
+            svgMap.sendRequest();
+        }
+
+    });
 
     //
     // Если браузер не знает о svg-картинках

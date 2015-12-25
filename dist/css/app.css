@@ -2419,6 +2419,26 @@ input[type="checkbox"], input[type="radio"] {
   color: #34495e;
   font-weight: 500; }
 
+/*Interactive (SVG) Map*/
+.i-map__object {
+  width: 100%;
+  height: auto;
+  visibility: hidden; }
+
+.i-map__img {
+  width: 100%;
+  height: auto;
+  display: none; }
+
+.no-svg .i-map__img {
+  display: block; }
+
+.no-js .i-map__object {
+  visibility: visible; }
+
+.no-svg .i-map__object {
+  display: none; }
+
 /*Scroll-up button*/
 .scroll-up-btn {
   width: 50px;
