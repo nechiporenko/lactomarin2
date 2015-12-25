@@ -25,7 +25,7 @@ textarea {
     box-sizing: border-box;
 
     @include placeholder{
-        color:$border-color;
+        color:$text-color;
         text-overflow:ellipsis;
     }
 

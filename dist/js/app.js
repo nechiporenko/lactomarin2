@@ -119,6 +119,7 @@ jQuery.extend(verge);
 // Слайдер сертификатов
 // Слайдер отзывов (видео+текст, аудио+текст)
 // Счетчики
+// Таймеры акционных предложений
 // SVG-карта
 // Если браузер не знает о svg-картинках
 // Если браузер не знает о плейсхолдерах в формах
@@ -567,6 +568,94 @@ jQuery(document).ready(function ($) {
         }
     }
     if ($('.js-counter').length) { initCounters() }
+
+    //
+    // Таймеры акционных предложений
+    //---------------------------------------------------------------------------------------
+    function initCountdown() {
+        var counter = [],
+            count = [],
+            timer = [];
+        counter = $('.js-countdown');
+        var l = counter.length;
+
+        counter.append('<div class="count-values"></div>');
+        counter.find('.count-values').append('<div class="count-day">00</div><div class="count-hour">00</div><div class="count-min"><span>00</span></div><div class="count-sec"><span>00</span></div>');
+        counter.append('<div class="count-names"></div>');
+        counter.find('.count-names').append('<div>дни</div><div>часы</div><div>мин</div><div>сек</div>');
+        var holderMin = $('.count-min > span');
+        var holderSec = $('.count-sec > span');
+
+        function Count(countdown, num) { //конструктор
+            this.name = countdown;
+            this.holderDay = this.name.find('.count-day');
+            this.holderHour = this.name.find('.count-hour');
+            this.holderMin = this.name.find('.count-min > span');
+            this.holderSec = this.name.find('.count-sec > span');
+            this.date = countdown.data('timer');//читаем дату в атрибуте data-timer
+            this.time = (new Date(this.date)).getTime();//переводим дату в миллисекунды
+            this.amount = 0;
+            this.days = 0;
+            this.hours = 0;
+            this.mins = 0;
+            this.secs = 0;
+            this.timer_number = num;//номер таймера (чтобы выключить при необходимости)
+            this.status = true;
+        };
+
+        Count.prototype.getCount = function () {
+            var current = new Date(); //берем текущую дату и время
+            this.amount = this.time - current.getTime();// и сравниваем с той что была указана в data-date
+            if (this.amount > 0) { //если актуально
+                this.amount = Math.floor(this.amount / 1000); //прибиваем миллисекунды
+                this.days = Math.floor(this.amount / 86400); //дни
+                this.amount = this.amount % 86400;
+                this.hours = Math.floor(this.amount / 3600); //часы
+                this.amount = this.amount % 3600;
+                this.mins = Math.floor(this.amount / 60); //минуты
+                this.amount = this.amount % 60;
+                this.secs = Math.floor(this.amount); //секунды
+
+                if (this.days > 99) this.days = 99; //приводим таймер к виду XX XX XX XX
+                if (this.days < 10) this.days = '0' + this.days;
+                if (this.hours < 10) this.hours = '0' + this.hours;
+                if (this.mins < 10) this.mins = '0' + this.mins;
+                if (this.secs < 10) this.secs = '0' + this.secs;
+            } else { //обнуляем таймер
+                this.days = '00';
+                this.hours = '00';
+                this.mins = '00';
+                this.secs = '00';
+                this.status = false;
+                clearInterval(timer[this.timer_number]); //выключаем таймер
+            };
+        };
+
+        Count.prototype.printCount = function () {//выводим значения в блоки
+            this.holderDay.text(this.days);
+            this.holderHour.text(this.hours);
+            this.holderMin.text(this.mins);
+            this.holderSec.text(this.secs);
+        };
+
+        for (var i = 0; i < l; i++) { //генерируем объекты-таймеры
+            count[i] = new Count(counter.eq(i), i);
+        };
+
+        function startCounter() {
+            for (var i = 0; i < l; i++) {
+                if (!count[i].status) continue; //если статус не тру, переходим к следующему таймеру
+                count[i].getCount();
+                count[i].printCount();
+            };
+        };
+
+        for (var i = 0; i < l; i++) {//запускаем таймеры
+            timer[i] = setInterval(startCounter, 1000);
+        };
+    }
+
+    if ($('.js-countdown').length) { initCountdown() }
 
     //
     // SVG-карта
