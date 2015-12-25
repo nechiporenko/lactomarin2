@@ -2492,7 +2492,7 @@ input[type="checkbox"], input[type="radio"] {
       height: 120px;
       display: table;
       margin: 0;
-      padding-bottom: 28px; } }
+      padding: 0 0 28px 28px; } }
 
 .b-timer__info {
   font-weight: 500;
