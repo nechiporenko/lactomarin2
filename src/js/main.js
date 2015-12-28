@@ -8,6 +8,7 @@
 // Автовыравнивание блоков по высоте
 // Лайтбокс
 // Аудиоплеер
+// Видео в модальном окне
 // Слайдер видео-ревью
 // Слайдер сертификатов
 // Слайдер отзывов (видео+текст, аудио+текст)
@@ -228,6 +229,32 @@ jQuery(document).ready(function ($) {
     $('audio').audioPlayer();
 
     //
+    // Видео в модальном окне
+    //---------------------------------------------------------------------------------------
+    $('.js-video').on('click', function (e) {
+        e.preventDefault();
+        var link = $(this).attr('href'),
+            id = getYoutubeID(link);
+
+        if (id) {
+            $('#video').find('iframe').attr('src', 'https://www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0;autoplay=1');
+            showModal.open('#video');
+        }
+
+        function getYoutubeID(url) {//парсим youtube-ссылку, возвращаем id видео
+            var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+            var match = url.match(regExp),
+                urllink;
+            if (match && match[1].length == 11) {
+                urllink = match[1];
+            } else {
+                urllink = false;
+            }
+            return urllink;
+        }
+    });
+
+    //
     // Слайдер видео-ревью
     //---------------------------------------------------------------------------------------
     function initReviewSlider() {
@@ -307,29 +334,6 @@ jQuery(document).ready(function ($) {
             }
             return current;
         }
-
-        $slider.on('click', '.js-video', function (e) {//по клику откроем видео в модальном окне
-            e.preventDefault();
-            var link = $(this).attr('href'),
-                id = getYoutubeID(link);
-
-            if (id) {
-                $('#video').find('iframe').attr('src', 'https://www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0;autoplay=1');
-                showModal.open('#video');
-            }
-        });
-
-        function getYoutubeID(url) {//парсим youtube-ссылку, возвращаем id видео
-            var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
-            var match = url.match(regExp),
-                urllink;
-            if (match && match[1].length == 11) {
-                urllink = match[1];
-            } else {
-                urllink = false;
-            }
-            return urllink;
-        }
     }
     if ($('.js-review-slider').length) { initReviewSlider(); }
 
@@ -407,7 +411,9 @@ jQuery(document).ready(function ($) {
     function initVideoSlider() {
         var $slider = $('.js-slider-video');
         $slider.bxSlider({
-            auto: false
+            auto: false,
+            infiniteLoop: false,
+            hideControlOnEnd: true
         });
     }
     if ($('.js-slider-video').length) { initVideoSlider() }
@@ -415,7 +421,9 @@ jQuery(document).ready(function ($) {
     function initAudioSlider() {
         var $slider = $('.js-slider-audio');
         $slider.bxSlider({
-            auto: false
+            auto: false,
+            infiniteLoop: false,
+            hideControlOnEnd: true,
         });
     }
     if ($('.js-slider-audio').length) { initAudioSlider() }

@@ -1,7 +1,6 @@
 ﻿@import "../modules/_base.scss";
 
-@import "page/_breadcrumbs.scss";
-@import "page/_main-banner.scss";//баннер на главной странице
+@import "page/_main-page-preview.scss";//баннер на главной странице
 @import "page/_consultation.scss"; //блок заказать консультацию
 @import "page/_use.scss";//блок "применение"
 @import "page/_features.scss"; //блок "благотворное влияние"
@@ -9,7 +8,7 @@
 @import "page/_manager.scss"; //блок консультация менеджера
 @import "page/_video-review-slider.scss"; //слайдер видео-отзывов
 @import "page/_review-single.scss";//блок с одним текстовым отзывом
-@import "page/_page-banner.scss";//баннер внутренней страницы
+@import "page/_inner-page-preview.scss";//баннер внутренней страницы
 @import "page/_composition.scss";//блок состав продукта
 @import "page/_counters.scss";//счетчики
 @import "page/_steps.scss"; //шаги "как заказать"
