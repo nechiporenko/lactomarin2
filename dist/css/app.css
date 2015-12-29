@@ -1061,6 +1061,16 @@ input[type="checkbox"], input[type="radio"] {
     .h-submenu__link {
       padding: 6px 15px; } }
 
+/*Second DesktopMenu Level - 2 column*/
+.h-submenu--half .h-submenu__item {
+  width: 50%; }
+  .h-submenu--half .h-submenu__item:nth-child(3n+1) {
+    clear: none; }
+  .h-submenu--half .h-submenu__item:nth-child(2n) {
+    margin-right: 0; }
+  .h-submenu--half .h-submenu__item:nth-child(2n+1) {
+    clear: left; }
+
 /*Mobile Menu*/
 .m-nav {
   position: fixed;

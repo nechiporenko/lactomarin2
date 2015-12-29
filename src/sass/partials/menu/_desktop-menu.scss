@@ -140,3 +140,14 @@
         padding:6px 15px;
     }
 }
+
+/*Second DesktopMenu Level - 2 column*/
+.h-submenu--half{
+    .h-submenu__item{
+        width:50%;
+        &:nth-child(3n+1){
+            clear:none;
+        }
+        @include omega(2n);
+    }
+}
