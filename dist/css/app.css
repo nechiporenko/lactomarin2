@@ -935,13 +935,14 @@ input[type="checkbox"], input[type="radio"] {
   padding: 12px 0;
   border-bottom: 1px solid #cbcbcb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1000; }
   @media screen and (min-width: 64em)  {
     .header {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 1000;
       padding-bottom: 19px; } }
 
 .header__inner {
@@ -1816,24 +1817,25 @@ input[type="checkbox"], input[type="radio"] {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #e6f2e8;
-    background-image: -webkit-linear-gradient(top, #e6f2e8, #b7cbca);
-    background-image: linear-gradient(to bottom,#e6f2e8, #b7cbca);
+    background-color: #effbee;
+    background-image: -webkit-linear-gradient(top, #effbee, #7acacb);
+    background-image: linear-gradient(to bottom,#effbee, #7acacb);
     z-index: -1; }
-  @media screen and (max-width: 34em)  {
+  @media screen and (max-width: 767px)  {
     .p-preview {
       background-image: none !important; } }
   @media screen and (min-width: 48em)  {
     .p-preview {
       padding: 37px 0 0;
-      height: 540px;
+      height: 538px;
+      background-size: unset;
       overflow: hidden; } }
 
 .p-preview__inner {
   position: relative; }
   @media screen and (min-width: 48em)  {
     .p-preview__inner {
-      height: 503px; } }
+      height: 501px; } }
 
 @media screen and (min-width: 48em)  {
   .p-preview__content {
@@ -1896,7 +1898,10 @@ input[type="checkbox"], input[type="radio"] {
   display: none; }
 
 .p-preview__btn--xs {
-  width: 248px; }
+  display: block;
+  width: 248px;
+  margin-left: auto;
+  margin-right: auto; }
 
 @media screen and (min-width: 48em)  {
   .p-preview__btn--xl {
@@ -1908,7 +1913,7 @@ input[type="checkbox"], input[type="radio"] {
 .b-reccomend {
   width: 248px;
   height: 144px;
-  margin-top: 30px;
+  margin: 30px auto 0;
   box-sizing: border-box;
   padding: 5px;
   border: 5px solid #b6d3a7;
@@ -1923,8 +1928,9 @@ input[type="checkbox"], input[type="radio"] {
   @media screen and (min-width: 48em)  {
     .b-reccomend {
       position: absolute;
-      bottom: 15px;
-      right: 0; } }
+      bottom: 55px;
+      right: 0;
+      margin: 0; } }
   @media screen and (min-width: 78em)  {
     .b-reccomend {
       margin-right: -100px; } }

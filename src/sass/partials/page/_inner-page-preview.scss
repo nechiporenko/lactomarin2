@@ -13,17 +13,18 @@
         display:block;
         position:absolute;
         top:0; right:0; bottom:0; left:0;
-        @include linear-gradient(to bottom, #e6f2e8, #b7cbca);
+        @include linear-gradient(to bottom, #effbee, #7acacb);
         z-index:-1;
     }
 
-    @include media(max-width em(544)){
+    @include media(max-width 767px){
         background-image:none !important;
     }
 
     @include media($tablet){
         padding:37px 0 0;
-        height:540px;
+        height:538px;
+        background-size:unset;
         overflow:hidden;
     }
 }
@@ -31,7 +32,7 @@
     @extend .g-inner;
     position:relative;
     @include media($tablet){
-        height:503px; //+паддинг сверху = 540 пикселей - общая высота баннера на десктопе
+        height:501px;//+паддинг сверху(37 пикселей) = 538 пикселей - общая высота баннера на десктопе
     }
 }
 
@@ -101,7 +102,10 @@
     display:none;
 }
 .p-preview__btn--xs{
+    display:block;
     width:248px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 @include media($tablet){
@@ -117,7 +121,7 @@
 .b-reccomend{
     width:248px;
     height:144px;
-    margin-top:30px;
+    margin:30px auto 0;
     box-sizing:border-box;
     padding:5px;
     border:5px solid #b6d3a7;
@@ -132,7 +136,8 @@
 
     @include media($tablet){
         position:absolute;
-        bottom:15px; right:0;
+        bottom:55px; right:0;
+        margin:0;
     }
 
     @include media($large){
