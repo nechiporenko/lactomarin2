@@ -291,6 +291,18 @@ jQuery(document).ready(function ($) {
             $submenu.slideUp();
             $menu_btn.removeClass('active');
         }
+
+        method.checkResize = function () {
+            var winW = verge.viewportW();
+            if (winW >= 1024) {//брекпоинт мобильного - десктопного меню
+                method.close();
+            }
+        }
+
+        $window.on('resize', function () {
+            setTimeout(method.checkResize, 500);
+        });
+
         return method;
     })();
 
