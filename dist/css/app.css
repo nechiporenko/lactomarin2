@@ -1384,8 +1384,6 @@ input[type="checkbox"], input[type="radio"] {
   @media screen and (min-width: 40em)  {
     .b-use {
       background-image: url(../img/b-use/b-use-bg.jpg); } }
-  .b-use .g-title, .b-use .b-composition__title {
-    margin-bottom: 25px; }
 
 .b-use__inner {
   position: relative;
@@ -1559,8 +1557,6 @@ input[type="checkbox"], input[type="radio"] {
 /*Main Info Block*/
 .b-info {
   background-color: #f9f9f9; }
-  .b-info .g-title, .b-info .b-composition__title {
-    margin-bottom: 45px; }
 
 .b-info__col, .b-manager__col {
   float: left;
