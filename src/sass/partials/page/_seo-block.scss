@@ -1,0 +1,72 @@
+﻿@import "../../modules/_base.scss";
+/*SEO Block*/
+.b-seo{
+    padding:30px 0;
+    background:#fff;
+    box-sizing:border-box;
+    height:300px;
+    overflow:hidden;
+    position:relative;
+
+    @include media($tablet){
+        height:396px;
+    }
+
+    &.active{
+        height:auto;
+        .b-seo__more{
+            display:none;
+        }
+    }
+}
+
+.b-seo__inner{
+    @extend .g-inner;
+    @include font-size(14px);
+}
+
+
+
+.b-seo__more{
+    position:absolute;
+    z-index:1;
+    left:0;
+    bottom:0;
+    width:100%;
+    padding:50px 0 30px;
+    text-align:center;
+    @include linear-gradient(to bottom, rgba(#fff, .15),rgba(#fff, .85), #fff);
+
+    @include media($tablet){
+        text-align:right;
+    }
+}
+
+.b-seo--alt{
+    background:#f9f9f9;
+    .b-seo__more{
+        @include linear-gradient(to bottom, rgba(#f9f9f9, .15),rgba(#f9f9f9, .85), #f9f9f9);
+    }
+}
+
+.lt-ie9{
+    .b-seo__more{
+        background-color:#fff;
+        filter: alpha(opacity=90);
+    }
+    .b-seo--alt .b-seo__more{
+        background-color:#f9f9f9;
+    }
+}
+
+
+.b-seo__link{
+    text-decoration:none;
+    color:$primary-alt;
+    @include font-size(18px);
+}
+.b-seo__btn{
+    display:inline-block;
+    line-height:1;
+    border-bottom:1px dashed $primary-alt;
+}

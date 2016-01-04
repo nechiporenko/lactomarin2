@@ -489,15 +489,15 @@ a, button, input[type="button"], input[type="submit"], input[type="color"], inpu
 .g-invisible {
   visibility: hidden; }
 
-.g-clearfix::after, .g-inner::after, .b-use__inner::after, .b-features__list::after, .b-info__inner::after, .b-manager__inner::after, .p-preview__inner::after, .b-sert__inner::after, .lt-ie9 .g-container::after, .lt-ie9 .header__inner::after, .lt-ie9 .g-row::after, .h-submenu::after, .b-manager__form::after, .r-slider__list::after, .b-counters__list::after, .b-steps__list::after, .b-sert__list::after, .sert-list::after, .rv-slider__list::after, .countdown .count-values::after, .countdown .count-names::after {
+.g-clearfix::after, .g-inner::after, .b-use__inner::after, .b-features__list::after, .b-info__inner::after, .b-manager__inner::after, .p-preview__inner::after, .b-sert__inner::after, .b-seo__inner::after, .lt-ie9 .g-container::after, .lt-ie9 .header__inner::after, .lt-ie9 .g-row::after, .h-submenu::after, .b-manager__form::after, .r-slider__list::after, .b-counters__list::after, .b-steps__list::after, .b-sert__list::after, .sert-list::after, .rv-slider__list::after, .countdown .count-values::after, .countdown .count-names::after {
   clear: both;
   content: "";
   display: table; }
 
-.lt-ie9 .g-clearfix:before, .lt-ie9 .g-inner:before, .lt-ie9 .b-use__inner:before, .lt-ie9 .b-features__list:before, .lt-ie9 .b-info__inner:before, .lt-ie9 .b-manager__inner:before, .lt-ie9 .p-preview__inner:before, .lt-ie9 .b-sert__inner:before, .lt-ie9 .g-container:before, .lt-ie9 .header__inner:before, .lt-ie9 .g-row:before, .lt-ie9 .h-submenu:before, .lt-ie9 .b-manager__form:before, .lt-ie9 .r-slider__list:before, .lt-ie9 .b-counters__list:before, .lt-ie9 .b-steps__list:before, .lt-ie9 .b-sert__list:before, .lt-ie9 .sert-list:before, .lt-ie9 .rv-slider__list:before, .lt-ie9 .countdown .count-values:before, .countdown .lt-ie9 .count-values:before, .lt-ie9 .countdown .count-names:before, .countdown .lt-ie9 .count-names:before, .lt-ie9 .g-clearfix:after, .lt-ie9 .g-inner:after, .lt-ie9 .b-use__inner:after, .lt-ie9 .b-features__list:after, .lt-ie9 .b-info__inner:after, .lt-ie9 .b-manager__inner:after, .lt-ie9 .p-preview__inner:after, .lt-ie9 .b-sert__inner:after, .lt-ie9 .g-container:after, .lt-ie9 .header__inner:after, .lt-ie9 .g-row:after, .lt-ie9 .h-submenu:after, .lt-ie9 .b-manager__form:after, .lt-ie9 .r-slider__list:after, .lt-ie9 .b-counters__list:after, .lt-ie9 .b-steps__list:after, .lt-ie9 .b-sert__list:after, .lt-ie9 .sert-list:after, .lt-ie9 .rv-slider__list:after, .lt-ie9 .countdown .count-values:after, .countdown .lt-ie9 .count-values:after, .lt-ie9 .countdown .count-names:after, .countdown .lt-ie9 .count-names:after {
+.lt-ie9 .g-clearfix:before, .lt-ie9 .g-inner:before, .lt-ie9 .b-use__inner:before, .lt-ie9 .b-features__list:before, .lt-ie9 .b-info__inner:before, .lt-ie9 .b-manager__inner:before, .lt-ie9 .p-preview__inner:before, .lt-ie9 .b-sert__inner:before, .lt-ie9 .b-seo__inner:before, .lt-ie9 .g-container:before, .lt-ie9 .header__inner:before, .lt-ie9 .g-row:before, .lt-ie9 .h-submenu:before, .lt-ie9 .b-manager__form:before, .lt-ie9 .r-slider__list:before, .lt-ie9 .b-counters__list:before, .lt-ie9 .b-steps__list:before, .lt-ie9 .b-sert__list:before, .lt-ie9 .sert-list:before, .lt-ie9 .rv-slider__list:before, .lt-ie9 .countdown .count-values:before, .countdown .lt-ie9 .count-values:before, .lt-ie9 .countdown .count-names:before, .countdown .lt-ie9 .count-names:before, .lt-ie9 .g-clearfix:after, .lt-ie9 .g-inner:after, .lt-ie9 .b-use__inner:after, .lt-ie9 .b-features__list:after, .lt-ie9 .b-info__inner:after, .lt-ie9 .b-manager__inner:after, .lt-ie9 .p-preview__inner:after, .lt-ie9 .b-sert__inner:after, .lt-ie9 .b-seo__inner:after, .lt-ie9 .g-container:after, .lt-ie9 .header__inner:after, .lt-ie9 .g-row:after, .lt-ie9 .h-submenu:after, .lt-ie9 .b-manager__form:after, .lt-ie9 .r-slider__list:after, .lt-ie9 .b-counters__list:after, .lt-ie9 .b-steps__list:after, .lt-ie9 .b-sert__list:after, .lt-ie9 .sert-list:after, .lt-ie9 .rv-slider__list:after, .lt-ie9 .countdown .count-values:after, .countdown .lt-ie9 .count-values:after, .lt-ie9 .countdown .count-names:after, .countdown .lt-ie9 .count-names:after {
   content: "";
   display: table; }
-.lt-ie9 .g-clearfix:after, .lt-ie9 .g-inner:after, .lt-ie9 .b-use__inner:after, .lt-ie9 .b-features__list:after, .lt-ie9 .b-info__inner:after, .lt-ie9 .b-manager__inner:after, .lt-ie9 .p-preview__inner:after, .lt-ie9 .b-sert__inner:after, .lt-ie9 .g-container:after, .lt-ie9 .header__inner:after, .lt-ie9 .g-row:after, .lt-ie9 .h-submenu:after, .lt-ie9 .b-manager__form:after, .lt-ie9 .r-slider__list:after, .lt-ie9 .b-counters__list:after, .lt-ie9 .b-steps__list:after, .lt-ie9 .b-sert__list:after, .lt-ie9 .sert-list:after, .lt-ie9 .rv-slider__list:after, .lt-ie9 .countdown .count-values:after, .countdown .lt-ie9 .count-values:after, .lt-ie9 .countdown .count-names:after, .countdown .lt-ie9 .count-names:after {
+.lt-ie9 .g-clearfix:after, .lt-ie9 .g-inner:after, .lt-ie9 .b-use__inner:after, .lt-ie9 .b-features__list:after, .lt-ie9 .b-info__inner:after, .lt-ie9 .b-manager__inner:after, .lt-ie9 .p-preview__inner:after, .lt-ie9 .b-sert__inner:after, .lt-ie9 .b-seo__inner:after, .lt-ie9 .g-container:after, .lt-ie9 .header__inner:after, .lt-ie9 .g-row:after, .lt-ie9 .h-submenu:after, .lt-ie9 .b-manager__form:after, .lt-ie9 .r-slider__list:after, .lt-ie9 .b-counters__list:after, .lt-ie9 .b-steps__list:after, .lt-ie9 .b-sert__list:after, .lt-ie9 .sert-list:after, .lt-ie9 .rv-slider__list:after, .lt-ie9 .countdown .count-values:after, .countdown .lt-ie9 .count-values:after, .lt-ie9 .countdown .count-names:after, .countdown .lt-ie9 .count-names:after {
   clear: both; }
 
 /* Utilities */
@@ -589,7 +589,7 @@ img.g-img-right {
       padding: 0 20px;
       padding: 0 1.25rem; } }
 
-.g-inner, .b-use__inner, .b-features__list, .b-info__inner, .b-manager__inner, .p-preview__inner, .b-sert__inner {
+.g-inner, .b-use__inner, .b-features__list, .b-info__inner, .b-manager__inner, .p-preview__inner, .b-sert__inner, .b-seo__inner {
   width: 100%;
   max-width: 940px;
   max-width: 58.75rem;
@@ -2653,6 +2653,65 @@ input[type="checkbox"], input[type="radio"] {
 
 .countdown .count-names > div:last-of-type {
   margin-right: 0; }
+
+/*SEO Block*/
+.b-seo {
+  padding: 30px 0;
+  background: #fff;
+  box-sizing: border-box;
+  height: 300px;
+  overflow: hidden;
+  position: relative; }
+  @media screen and (min-width: 48em)  {
+    .b-seo {
+      height: 396px; } }
+  .b-seo.active {
+    height: auto; }
+    .b-seo.active .b-seo__more {
+      display: none; }
+
+.b-seo__inner {
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.b-seo__more {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 50px 0 30px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.85), #fff);
+  background-image: linear-gradient(to bottom,rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.85), #fff); }
+  @media screen and (min-width: 48em)  {
+    .b-seo__more {
+      text-align: right; } }
+
+.b-seo--alt {
+  background: #f9f9f9; }
+  .b-seo--alt .b-seo__more {
+    background-color: rgba(249, 249, 249, 0.15);
+    background-image: -webkit-linear-gradient(top, rgba(249, 249, 249, 0.15), rgba(249, 249, 249, 0.85), #f9f9f9);
+    background-image: linear-gradient(to bottom,rgba(249, 249, 249, 0.15), rgba(249, 249, 249, 0.85), #f9f9f9); }
+
+.lt-ie9 .b-seo__more {
+  background-color: #fff;
+  filter: alpha(opacity=90); }
+.lt-ie9 .b-seo--alt .b-seo__more {
+  background-color: #f9f9f9; }
+
+.b-seo__link {
+  text-decoration: none;
+  color: #38c996;
+  font-size: 18px;
+  font-size: 1.125rem; }
+
+.b-seo__btn {
+  display: inline-block;
+  line-height: 1;
+  border-bottom: 1px dashed #38c996; }
 
 /*Scroll-up button*/
 .scroll-up-btn {
