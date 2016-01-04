@@ -2381,6 +2381,11 @@ input[type="checkbox"], input[type="radio"] {
   @media screen and (min-width: 64em)  {
     .rv-slider .audioplayer {
       margin-bottom: 0; } }
+.rv-slider .bx-wrapper .bx-controls-direction a {
+  display: none; }
+  @media screen and (min-width: 48em)  {
+    .rv-slider .bx-wrapper .bx-controls-direction a {
+      display: block; } }
 
 .rv-slider__item {
   float: left;

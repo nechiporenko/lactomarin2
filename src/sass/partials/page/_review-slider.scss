@@ -11,6 +11,18 @@
             margin-bottom:0;
         }
     }
+
+    .bx-wrapper{
+        .bx-controls-direction a{
+            //opacity:.5;
+            display:none;
+
+            @include media($tablet){
+                //opacity:1;
+                display:block;
+            }
+        }
+    }
 }
 .rv-slider--alt{
     @extend .p-block--alt;
