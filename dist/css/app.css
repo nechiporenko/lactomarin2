@@ -678,6 +678,23 @@ img.g-img-right {
     background-image: linear-gradient(to top,#fd4f33, #da4328);
     color: #fff; }
 
+/*Show short button for small screen & large button for desktop*/
+.g-buttonbox {
+  text-align: center; }
+
+.g-butoonbox__xl {
+  display: none; }
+
+@media screen and (min-width: 48em)  {
+  .g-buttonbox--right {
+    text-align: right; }
+  .g-buttonbox--left {
+    text-align: left; }
+  .g-buttonbox__xs {
+    display: none; }
+  .g-butoonbox__xl {
+    display: inline-block; } }
+
 /* Forms */
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea {
   -webkit-appearance: none;

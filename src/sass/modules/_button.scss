@@ -44,3 +44,29 @@
         color:#fff;
     }
 }
+
+
+/*Show short button for small screen & large button for desktop*/
+.g-buttonbox{
+    text-align:center;
+}
+
+.g-butoonbox__xl{
+    display:none;
+}
+
+@include media($tablet){
+    .g-buttonbox--right{
+        text-align:right;
+    }
+    .g-buttonbox--left{
+        text-align:left;
+    }
+    .g-buttonbox__xs{
+        display:none;
+    }
+    .g-butoonbox__xl{
+        display:inline-block;
+    }
+}
+
