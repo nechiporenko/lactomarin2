@@ -32,19 +32,10 @@
 }
 .h-menu__link{
     display:inline-block;
-    @include px2rem(padding, 26px 3px 34px);
+    @include px2rem(padding, 26px 3px 0);
     text-decoration:none;
     @include px2rem(letter-spacing, -.5px);
     position:relative;
-
-    &:before{ //прослойка высотой как нижний пэддинг хидера, для того чтобы можно было перевести мышку с пункта меню ниже
-        content:'';
-        display:block;
-        position:absolute;
-        height:19px;
-        width:100%;
-        top:100%; left:0;
-    }    
 
     &:hover,
     &:active,
@@ -54,7 +45,7 @@
     }
 
     @include media($large){
-        @include px2rem(padding, 26px 15px 34px);
+        @include px2rem(padding, 26px 15px 0);
         letter-spacing:0;
     }
 }
@@ -68,29 +59,14 @@
         left:50%;
         @include font-size(18px);
         margin-left:-8px;
-        opacity:0;
-        @include transition(opacity .15s ease-in);
+        z-index:1001;
+        display:none;
     }
 
     &:hover,
     &.hover{
         &:after{
-            opacity:1;
-        }
-    }
-}
-
-.lt-ie9{
-    .has-menu .h-menu__link{
-        &:after{
-            display:none;
-        }
-
-        &:hover,
-        &.hover{
-            &:after{
-                display:block;
-            }
+            display:block;
         }
     }
 }
@@ -99,8 +75,8 @@
 .h-submenu{
     @extend .g-clearfix;
     list-style-type:none;
-    padding:0 0 16px 0;
-    margin:19px 0 0 0;
+    padding:53px 0 16px;
+    margin:0;
     position:absolute;
     top:100%; left:0;
     width:100%;
@@ -114,6 +90,24 @@
     border-bottom-right-radius:10px;
     box-shadow:0 1px 1px rgba(#000, .1);
     display:none; //покажем скриптом
+
+    &:before,
+    &:after{//скроем бордер по краям (на уровне хидера)
+        content:'';
+        width:4px;
+        height:53px;
+        background:#fff;
+        position:absolute;
+        top:0;
+        z-index:1001;
+    }
+
+    &:before{
+        left:-2px;
+    }
+    &:after{
+        right:-2px;
+    }
 }
 
 .h-submenu__item{

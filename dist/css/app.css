@@ -994,26 +994,18 @@ input[type="checkbox"], input[type="radio"] {
 
 .h-menu__link {
   display: inline-block;
-  padding: 26px 3px 34px;
-  padding: 1.625rem 0.1875rem 2.125rem;
+  padding: 26px 3px 0;
+  padding: 1.625rem 0.1875rem 0;
   text-decoration: none;
   letter-spacing: 0px;
   letter-spacing: -0.03125rem;
   position: relative; }
-  .h-menu__link:before {
-    content: '';
-    display: block;
-    position: absolute;
-    height: 19px;
-    width: 100%;
-    top: 100%;
-    left: 0; }
   .h-menu__link:hover, .h-menu__link:active, .h-menu__link.hover, .h-menu__link.current {
     color: #38c996; }
   @media screen and (min-width: 78em)  {
     .h-menu__link {
-      padding: 26px 15px 34px;
-      padding: 1.625rem 0.9375rem 2.125rem;
+      padding: 26px 15px 0;
+      padding: 1.625rem 0.9375rem 0;
       letter-spacing: 0; } }
 
 .has-menu .h-menu__link:after {
@@ -1025,23 +1017,16 @@ input[type="checkbox"], input[type="radio"] {
   font-size: 18px;
   font-size: 1.125rem;
   margin-left: -8px;
-  opacity: 0;
-  -webkit-transition: opacity .15s ease-in;
-  -moz-transition: opacity .15s ease-in;
-  transition: opacity .15s ease-in; }
-.has-menu .h-menu__link:hover:after, .has-menu .h-menu__link.hover:after {
-  opacity: 1; }
-
-.lt-ie9 .has-menu .h-menu__link:after {
+  z-index: 1001;
   display: none; }
-.lt-ie9 .has-menu .h-menu__link:hover:after, .lt-ie9 .has-menu .h-menu__link.hover:after {
+.has-menu .h-menu__link:hover:after, .has-menu .h-menu__link.hover:after {
   display: block; }
 
 /*Second DesktopMenu Level*/
 .h-submenu {
   list-style-type: none;
-  padding: 0 0 16px 0;
-  margin: 19px 0 0 0;
+  padding: 53px 0 16px;
+  margin: 0;
   position: absolute;
   top: 100%;
   left: 0;
@@ -1056,6 +1041,18 @@ input[type="checkbox"], input[type="radio"] {
   border-bottom-right-radius: 10px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   display: none; }
+  .h-submenu:before, .h-submenu:after {
+    content: '';
+    width: 4px;
+    height: 53px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    z-index: 1001; }
+  .h-submenu:before {
+    left: -2px; }
+  .h-submenu:after {
+    right: -2px; }
 
 .h-submenu__item {
   float: left;
