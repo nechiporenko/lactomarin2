@@ -2378,11 +2378,18 @@ input[type="checkbox"], input[type="radio"] {
   @media screen and (min-width: 64em)  {
     .rv-slider .audioplayer {
       margin-bottom: 0; } }
-.rv-slider .bx-wrapper .bx-controls-direction a {
-  display: none; }
-  @media screen and (min-width: 48em)  {
+
+@media screen and (max-width: 767px)  {
+  .rv-slider .bx-wrapper {
+    padding-top: 30px; }
     .rv-slider .bx-wrapper .bx-controls-direction a {
-      display: block; } }
+      top: 0; }
+    .rv-slider .bx-wrapper .bx-prev {
+      left: 50%;
+      margin-left: -22px; }
+    .rv-slider .bx-wrapper .bx-next {
+      left: 50%;
+      margin-left: 22px; } }
 
 .rv-slider__item {
   float: left;

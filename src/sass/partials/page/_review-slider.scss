@@ -11,19 +11,29 @@
             margin-bottom:0;
         }
     }
+}
 
-    .bx-wrapper{
-        .bx-controls-direction a{
-            //opacity:.5;
-            display:none;
+@include media(max-width 767px){
+    .rv-slider{
+        .bx-wrapper{
+            padding-top:30px;
 
-            @include media($tablet){
-                //opacity:1;
-                display:block;
+            .bx-controls-direction a{
+                top:0;
+            }
+
+            .bx-prev{
+                left:50%;
+                margin-left:-22px;
+            }
+            .bx-next{
+                left:50%;
+                margin-left:22px;
             }
         }
     }
 }
+
 .rv-slider--alt{
     @extend .p-block--alt;
 }
