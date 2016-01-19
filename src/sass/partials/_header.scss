@@ -11,6 +11,12 @@
     color: $text-color;
     box-sizing:border-box;
 
+    padding-top:59px;//фиксированный хидер
+
+    @include media($small){
+        padding-top:101px;
+    }
+
     @include media($desktop){
         padding-top:108px; //высота десктоп-хидера
     }
@@ -25,13 +31,14 @@
     border-bottom:1px solid $border-color;
     box-shadow:0 1px 3px rgba(#000, .4);
     box-sizing:border-box;
-    position:relative;
+    //position:relative;
+    position:fixed;
+    top:0; left:0;
     z-index:1000;
 
     @include media($desktop){
-        position:fixed;
-        top:0; left:0;
-        //z-index:1000;
+        //position:fixed;
+        //top:0; left:0;
         padding-bottom:19px;
     }
 }

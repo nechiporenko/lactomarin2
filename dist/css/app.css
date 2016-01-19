@@ -938,7 +938,11 @@ input[type="checkbox"], input[type="radio"] {
   line-height: 1.2857142857;
   font-family: 'Roboto', Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
   color: #727272;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding-top: 59px; }
+  @media screen and (min-width: 40em)  {
+    .page {
+      padding-top: 101px; } }
   @media screen and (min-width: 64em)  {
     .page {
       padding-top: 108px; } }
@@ -953,13 +957,12 @@ input[type="checkbox"], input[type="radio"] {
   border-bottom: 1px solid #cbcbcb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 1000; }
   @media screen and (min-width: 64em)  {
     .header {
-      position: fixed;
-      top: 0;
-      left: 0;
       padding-bottom: 19px; } }
 
 .header__inner {
@@ -2840,6 +2843,14 @@ input[type="checkbox"], input[type="radio"] {
     .f-info__item {
       margin: 0 0 16px 0; } }
 
+.f-info__number {
+  display: inline-block;
+  line-height: 1;
+  border-bottom: 1px dashed #ccc;
+  -webkit-transition: border-color .15s ease-in;
+  -moz-transition: border-color .15s ease-in;
+  transition: border-color .15s ease-in; }
+
 .f-info__tel {
   font-size: 16px;
   font-size: 1rem;
@@ -2849,6 +2860,8 @@ input[type="checkbox"], input[type="radio"] {
   font-weight: 700; }
   .f-info__tel:hover, .f-info__tel:active {
     color: #38c996; }
+    .f-info__tel:hover .f-info__number, .f-info__tel:active .f-info__number {
+      border-color: #38c996; }
   @media screen and (min-width: 64em)  {
     .f-info__tel {
       font-size: 24px;
