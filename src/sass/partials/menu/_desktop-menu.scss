@@ -145,3 +145,60 @@
         @include omega(2n);
     }
 }
+
+/*Scroller for Desktop Submenu*/
+.h-menu__scroll{//обертка для скроллера
+    display:none;
+    height:240px;
+    padding:53px 0 16px;
+    position:absolute;
+    top:100%; left:0;
+    width:100%;
+    z-index:1000;
+    box-sizing:border-box;
+    border-left:1px solid $border-color;
+    border-bottom:1px solid $border-color;
+    border-right:1px solid $border-color;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    box-shadow:0 1px 1px rgba(#000, .1);
+    background:#fff;
+
+    &:before,
+    &:after{//скроем бордер по краям (на уровне хидера)
+        content:'';
+        width:4px;
+        height:53px;
+        background:#fff;
+        position:absolute;
+        top:0;
+        z-index:1001;
+    }
+
+    &:before{
+        left:-2px;
+    }
+    &:after{
+        right:-2px;
+    }
+
+    .h-submenu{
+        position:static;
+        padding:0;
+        border:none;
+        border-radius:0;
+        box-shadow:none;
+
+        &:before,
+        &:after{
+            display:none;
+        }
+    }
+}
+
+.h-menu__inner{//этот блок будет скроллится
+    height:100%;
+    padding-right:8px;
+    overflow:hidden;
+}
+

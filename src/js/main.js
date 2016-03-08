@@ -3,6 +3,7 @@
 // Модальное окно
 // Десктоп меню (выпадайки)
 // Мобильное меню
+// Скролл-контент
 // Кнопка скролла страницы
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
@@ -117,10 +118,12 @@ jQuery(document).ready(function ($) {
         $menu.find('li').has('ul').addClass('has-menu');
         $menu.children('li').on({
             mouseenter: function () {
+                $(this).find('div').stop(true, true).fadeIn('fast');
                 $(this).find('ul:first').stop(true, true).fadeIn('fast');
                 $(this).find('a:first').addClass('hover');
             },
             mouseleave: function () {
+                $(this).find('div').stop(true, true).hide();
                 $(this).find('ul').stop(true, true).hide();
                 $(this).find('a:first').removeClass('hover');
             }
@@ -198,6 +201,24 @@ jQuery(document).ready(function ($) {
 
         return method;
     })();
+
+    //
+    // Скролл-контент
+    //---------------------------------------------------------------------------------------
+    function initScroller() {
+        var $scroll = $('.js-scroll');
+
+        $scroll.slimScroll({
+            height: 'auto',
+            size:8,
+            alwaysVisible: true,
+            railVisible: true,
+            disableFadeOut: true
+        });
+    }
+    if ($('.js-scroll').length) {
+        initScroller();
+    }
 
 
     //
