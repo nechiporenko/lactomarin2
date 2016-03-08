@@ -9,7 +9,8 @@
     z-index:1200;//поверх хидера
     overflow-x:hidden;
     overflow-y:auto;
-    @include transition(transform .3s ease);
+    will-change:right;
+    @include transition(right .3s ease);
     @include linear-gradient(to bottom, #fff, #f9f9f9);
     border-left:1px solid $border-color;
     box-sizing:border-box;
@@ -19,15 +20,11 @@
     }
 
     &.active{
-        @include transform(translateX(-100%));
-    }
-}
-
-.no-csstransforms{
-    .m-menu.active{
         right:0;
     }
 }
+
+
 .m-menu{
     @extend .g-clearlist;
 }

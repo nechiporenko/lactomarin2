@@ -1145,9 +1145,10 @@ input[type="checkbox"], input[type="radio"] {
   z-index: 1200;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -moz-transition: -moz-transform 0.3s ease;
-  transition: transform 0.3s ease;
+  will-change: right;
+  -webkit-transition: right .3s ease;
+  -moz-transition: right .3s ease;
+  transition: right .3s ease;
   background-color: #fff;
   background-image: -webkit-linear-gradient(top, #fff, #f9f9f9);
   background-image: linear-gradient(to bottom,#fff, #f9f9f9);
@@ -1157,14 +1158,7 @@ input[type="checkbox"], input[type="radio"] {
     .m-nav {
       display: none; } }
   .m-nav.active {
-    -webkit-transform: translateX(-100%);
-    -moz-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    -o-transform: translateX(-100%);
-    transform: translateX(-100%); }
-
-.no-csstransforms .m-menu.active {
-  right: 0; }
+    right: 0; }
 
 .m-menu__link {
   display: block;
