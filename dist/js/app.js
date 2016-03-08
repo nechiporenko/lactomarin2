@@ -154,7 +154,8 @@ jQuery.extend(verge);
 // Модальное окно
 // Десктоп меню (выпадайки)
 // Мобильное меню
-// Скролл-контент
+// Скролл-контент для десктоп-субменю
+// Скролл-контент для блоков "Применение"
 // Кнопка скролла страницы
 // Маска для телефонного номера
 // Автовыравнивание блоков по высоте
@@ -354,9 +355,9 @@ jQuery(document).ready(function ($) {
     })();
 
     //
-    // Скролл-контент
+    // Скролл-контент для десктоп-субменю
     //---------------------------------------------------------------------------------------
-    function initScroller() {
+    function initSubmenuScroller() {
         var $scroll = $('.js-scroll');
 
         $scroll.slimScroll({
@@ -368,9 +369,24 @@ jQuery(document).ready(function ($) {
         });
     }
     if ($('.js-scroll').length) {
-        initScroller();
+        initSubmenuScroller();
     }
 
+    //
+    // Скролл-контент для блоков "Применение"
+    //---------------------------------------------------------------------------------------
+    function initBlockScroller(){
+        var $scroll = $('.js-scroll-block');
+        $scroll.slimScroll({
+            height: '320px',
+            size: 8,
+            alwaysVisible: true,
+            allowPageScroll: true
+        });
+    }
+    if ($('.js-scroll-block').height) {
+        initBlockScroller();
+    }
 
     //
     // Кнопка скролла страницы

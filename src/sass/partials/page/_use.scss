@@ -43,6 +43,7 @@
         position:absolute;
         right:-10px;
         bottom:-22px;
+        z-index:100;
     }
 
     @include media($small){
@@ -148,4 +149,33 @@
     @include media($large){
         display:block;
     }
+}
+
+/*USE scroll-block*/
+.b-use__col--has-scroll{
+    padding:25px 0;
+    .b-use__list{
+        padding:0 10px;
+
+        @include media($small){
+            padding:0 20px;
+        }
+    }
+    .b-use__title{
+        padding-left:10px;
+        padding-right:10px;
+
+        @include media($tablet){
+            padding-left:20px;
+            padding-right:20px;
+        }
+    }
+}
+.b-use__scroll{
+    padding-right:8px;
+    overflow:hidden;
+}
+.no-js .b-use__scroll{
+    padding-right:0;
+    overflow:auto;
 }
