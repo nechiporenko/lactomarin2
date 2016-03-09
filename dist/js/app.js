@@ -153,8 +153,8 @@ jQuery.extend(verge);
 
 // Модальное окно
 // Десктоп меню (выпадайки)
-// Мобильное меню
 // Скролл-контент для десктоп-субменю
+// Мобильное меню
 // Скролл-контент для блоков "Применение"
 // Кнопка скролла страницы
 // Маска для телефонного номера
@@ -283,6 +283,37 @@ jQuery(document).ready(function ($) {
     })();
 
     //
+    // Скролл-контент для десктоп-субменю
+    //---------------------------------------------------------------------------------------
+    function initSubmenuScroller() {
+        var $scroll = $('.js-scroll');
+        $scroll.each(function () {
+            var $elem = $(this),
+                $btn_up = $elem.parent().find('.h-menu__nav--up'),
+                $btn_down = $elem.parent().find('.h-menu__nav--down'),
+                elemH;
+            
+            $elem.slimScroll({
+                height: 'auto',
+                size: 8,
+                alwaysVisible: true,
+                railVisible: true,
+                disableFadeOut: true
+            });
+            elemH = $elem.height();
+            $btn_up.on('click', function () {
+                $elem.slimScroll({ scrollBy: elemH });
+            });
+            $btn_down.on('click', function () {
+                $elem.slimScroll({ scrollBy: -elemH });
+            });
+        });
+    }
+    if ($('.js-scroll').length) {
+        initSubmenuScroller();
+    }
+
+    //
     // Мобильное меню
     //---------------------------------------------------------------------------------------
     var mobileMenu = (function () {
@@ -354,23 +385,7 @@ jQuery(document).ready(function ($) {
         return method;
     })();
 
-    //
-    // Скролл-контент для десктоп-субменю
-    //---------------------------------------------------------------------------------------
-    function initSubmenuScroller() {
-        var $scroll = $('.js-scroll');
-
-        $scroll.slimScroll({
-            height: 'auto',
-            size:8,
-            alwaysVisible: true,
-            railVisible: true,
-            disableFadeOut: true
-        });
-    }
-    if ($('.js-scroll').length) {
-        initSubmenuScroller();
-    }
+    
 
     //
     // Скролл-контент для блоков "Применение"

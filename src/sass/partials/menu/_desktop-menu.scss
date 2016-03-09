@@ -149,8 +149,9 @@
 /*Scroller for Desktop Submenu*/
 .h-menu__scroll{//обертка для скроллера
     display:none;
-    height:240px;
-    padding:53px 0 16px;
+    height:350px;
+    //padding:53px 0 16px;
+    padding:77px 0 40px;
     position:absolute;
     top:100%; left:0;
     width:100%;
@@ -202,3 +203,30 @@
     overflow:hidden;
 }
 
+.h-menu__nav{
+    display:block;
+    height:24px;
+    line-height:24px;
+    border:none;
+    background:#f9f9f9;
+    padding:0 10px;
+    margin:0;
+    text-align:center;
+    color:$primary;
+    @include font-size(18px);
+    position:absolute;
+    left:0;
+    width:100%;
+
+    &:hover,
+    &:focus{
+        color:$primary-alt;
+        outline:0;
+    }
+}
+.h-menu__nav--up{
+    top:53px;
+}
+.h-menu__nav--down{
+    bottom:16px;
+}

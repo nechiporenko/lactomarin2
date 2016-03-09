@@ -1092,8 +1092,8 @@ input[type="checkbox"], input[type="radio"] {
 /*Scroller for Desktop Submenu*/
 .h-menu__scroll {
   display: none;
-  height: 240px;
-  padding: 53px 0 16px;
+  height: 350px;
+  padding: 77px 0 40px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -1132,6 +1132,31 @@ input[type="checkbox"], input[type="radio"] {
   height: 100%;
   padding-right: 8px;
   overflow: hidden; }
+
+.h-menu__nav {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  border: none;
+  background: #f9f9f9;
+  padding: 0 10px;
+  margin: 0;
+  text-align: center;
+  color: #488ccb;
+  font-size: 18px;
+  font-size: 1.125rem;
+  position: absolute;
+  left: 0;
+  width: 100%; }
+  .h-menu__nav:hover, .h-menu__nav:focus {
+    color: #38c996;
+    outline: 0; }
+
+.h-menu__nav--up {
+  top: 53px; }
+
+.h-menu__nav--down {
+  bottom: 16px; }
 
 /*Mobile Menu*/
 .m-nav {
