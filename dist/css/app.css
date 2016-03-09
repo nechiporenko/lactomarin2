@@ -1553,6 +1553,17 @@ input[type="checkbox"], input[type="radio"] {
   padding-right: 0;
   overflow: auto; }
 
+/*USE columns modify*/
+@media screen and (min-width: 64em)  {
+  .b-use__inner--one-column .b-use__col {
+    float: none;
+    margin-left: auto !important;
+    margin-right: auto; } }
+
+@media screen and (min-width: 64em)  {
+  .b-use__inner--two-columns .b-use__col:first-child {
+    margin-left: 17.0566%; } }
+
 /*Features block*/
 .b-features__list {
   list-style-type: none;

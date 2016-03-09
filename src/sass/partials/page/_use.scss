@@ -11,10 +11,6 @@
     @include media($small){
         background-image:url(../img/b-use/b-use-bg.jpg);
     }
-
-    //.g-title{
-    //    margin-bottom:25px;
-    //}
 }
 .b-use__inner{
     @extend .g-inner;
@@ -178,4 +174,22 @@
 .no-js .b-use__scroll{
     padding-right:0;
     overflow:auto;
+}
+
+/*USE columns modify*/
+.b-use__inner--one-column{
+    .b-use__col{
+        @include media($desktop){
+            float:none;
+            margin-left:auto !important;
+            margin-right:auto;
+        }
+    }
+}
+.b-use__inner--two-columns{
+    .b-use__col:first-child{
+        @include media($desktop){
+            margin-left:17.0566%;
+        }
+    }
 }
