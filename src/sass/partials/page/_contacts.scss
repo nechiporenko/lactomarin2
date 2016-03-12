@@ -1,0 +1,72 @@
+﻿@import "../../modules/_base.scss";
+/*Contacts Section*/
+.b-contacts{
+    padding-top:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid $border-color;
+    @extend .p-block--alt;
+
+    @include media($tablet){
+        padding-bottom:0;
+    }
+}
+
+.b-contacts__map{
+    height:320px;
+    background:#bbb;
+    position:relative;
+
+    @include media($tablet){
+        height:410px;
+    }
+}
+
+.b-contacts__info{
+    width:260px;
+    border-radius:$border-radius;
+    padding:30px 20px;
+    box-sizing:border-box;
+    background-color:#fff;
+    @include font-size(16px);
+    color:$title-color;
+    font-weight:500;
+
+    p{
+        margin:20px 0;
+    }
+
+    [class^="icon-"]:before, [class*=" icon-"]:before{
+        color:$primary;
+    }
+}
+
+.b-contacts__info--xs{
+    margin:30px auto 0;
+
+    @include media($tablet){
+        display:none;
+    }
+}
+
+.b-contacts__info--md{
+    display:none;
+    position:absolute;
+    top:20%;
+    left:50%;
+    margin-left:100px;
+    z-index:10;
+    background-color:rgba(#fff, .7);
+
+    @include media($tablet){
+        display:block;
+    }
+
+    @include media($large){
+        margin-left:190px;
+    }
+}
+
+.b-contacts__item{
+    display:block;
+    padding-left:26px;
+}

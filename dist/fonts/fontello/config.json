@@ -107,6 +107,18 @@
       "css": "ok-circled",
       "code": 59402,
       "src": "mfglabs"
+    },
+    {
+      "uid": "22cfc7af2c4f158b37317c65c92b48c2",
+      "css": "location",
+      "code": 59403,
+      "src": "elusive"
+    },
+    {
+      "uid": "767fede84586366cd7d6c835be745454",
+      "css": "mobile",
+      "code": 59404,
+      "src": "entypo"
     }
   ]
 }
